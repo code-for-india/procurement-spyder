@@ -126,16 +126,44 @@ angular.module('myApp').controller('SubscriptionController',
     };
 
     $scope.locations = [];
-    $scope.cities = [
+    $scope.states = [
       'All over India',
-      'Bangalore',
-      'Chennai',
-      'Delhi',
-      'Mumbai',
-      'Pune',
-      'Kolkatta'
+      "Andaman and Nicobar Islands",
+      "Andhra Pradesh",
+      "Arunachal Pradesh",
+      "Assam",
+      "Bihar",
+      "Chandigarh",
+      "Chhattisgarh",
+      "Dadra and Nagar Haveli",
+      "Daman and Diu",
+      "Delhi",
+      "Goa",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jammu and Kashmir",
+      "Jharkhand",
+      "Karnataka",
+      "Kerala",
+      "Lakshadweep",
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Manipur",
+      "Meghalaya",
+      "Mizoram",
+      "Nagaland",
+      "Orissa",
+      "Pondicherry",
+      "Punjab",
+      "Rajasthan",
+      "Sikkim",
+      "Tamil Nadu",
+      "Tripura",
+      "Uttaranchal",
+      "Uttar Pradesh",
+      "West Bengal"
     ];
-
     $scope.subscribe = function () {
       $scope.saving = true;
       var subscription = new Subscriptions({

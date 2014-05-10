@@ -6,13 +6,16 @@ app = Flask(__name__, static_folder='client', static_url_path='')
 def index():
 	return app.send_static_file('index.html')
 
-@app.route('/helloworld')
-def search():
-		return "Hello World"
-
-@app.route('/hello/<name>')
-def search_candidate(name):
-	return "Hello " + str(name)
+@app.route('/projects', methods=["POST", "GET"])
+def projects():
+	'''
+	Function to create/get projects
+	'''
+	if request.method == 'POST':
+		print request.data
+		return database.create_projects(request.data), 201
+	elif request.method == 'GET':
+		return database.get_all_projects()
 
 if __name__ == '__main__':
 	app.run(debug = True, host = '0.0.0.0', port = 8000)

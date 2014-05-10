@@ -6,7 +6,8 @@ angular.module('myApp', [
     'ngResource',
     'ngCookies',
     'ngSanitize',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'google-maps'
     ])
     .config(function ($routeProvider) {
         $routeProvider
@@ -15,7 +16,7 @@ angular.module('myApp', [
                 controller: 'ProjectsMapController'
             })
             .when('/projects', {
-                templateUrl: 'scripts/views/project-list.html',
+                templateUrl: 'scripts/views/projects-list.html',
                 controller: 'ProjectsListController'
             })
             .when('/projects/:id', {

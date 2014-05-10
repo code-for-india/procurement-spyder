@@ -2,7 +2,7 @@ import urllib
 import urllib2
 import json
 from bson import json_util
-COUNT=5
+COUNT=500
 
 def main():
 	push_to_db(pull_from_worldbank())

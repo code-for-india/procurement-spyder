@@ -19,7 +19,6 @@ def pull_from_worldbank():
 				'source':'IBRD',
 				'countryname_exact':'Republic of India',
 				'rows':COUNT,
-				'geocode':'on',
 				'kw':'N'
 				}	
 	data = urllib.urlencode(params)
@@ -35,50 +34,6 @@ def push_to_db(projects):
 	req = urllib2.Request(db_url, projects, {'Content-Type':'application/json'})
 	response = urllib2.urlopen(req)
 	print response.read()
-
-'''
-def pull_procurements():
-	wb_url = 'http://www.worldbank.org/p2e/generateexcel.html'
-	params = {
-				'noOfRows':COUNT,
-				'startIndex':0,
-				'lang':'en',
-				'notice_type_exact':'',
-				'procurement_method_name_exact':'',
-				'procurement_type_exact':'',
-				'project_ctry_name_exact':'',
-				'regionname_exact':'',
-				'project_ctry_code_exact':'IN',
-				'procurement_method_code_exact':'',
-				'project_id':'',
-				'sectorcode_exact':'',
-				'showrecent':'',
-				'searchString':'',
-				'option':'noticesearchresult'
-			}
-	proc_file = os.path.join(tempfile.gettempdir(), 't.xls')
-	try:
-		os.remove(proc_file)
-	except OSError, e:
-		pass
-
-	start_index = 1
-
-	while True:
-		data = urllib.urlencode(params)
-		print wb_url+'?'+data
-		req = urllib2.Request(wb_url, data)
-		response = urllib2.urlopen(req)
-		f = open(proc_file, 'ab')
-		buf = response.read()
-		if not buf:
-			break
-		f.write(buf)
-		f.close()
-		start_index = start_index + COUNT
-		params['startIndex'] = start_index;
-	return proc_file
-'''
 
 def pull_procurements():
 	url = 'http://www.worldbank.org/p2e/procurement/procurementsearchpagination.html'

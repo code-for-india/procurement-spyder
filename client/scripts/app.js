@@ -21,7 +21,3 @@ angular.module('myApp', [
 
             .otherwise({redirectTo: function() { return '/'; }});
     });
-
-// angular.module('myApp')
-//     .run(function($rootScope) {
-//     });

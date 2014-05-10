@@ -1,4 +1,4 @@
-# Follow The Money
+# Procurement Spy
 
 Money from World Bank supported projects impacts citizens and businesses directly
 through the contracts that are awarded for public goods or services - such as
@@ -6,10 +6,13 @@ for laying roads or building schools. Surprisingly, not many many know about
 these contracts we’re investing in, even when they represent large amounts of
 public money meant for their neighbourhood.
 
-* Citizen oversight of who gets this money to do what and where can deter
+1. Citizen oversight of who gets this money to do what and where can deter
 corruption and improve quality of delivery.
-* Knowledge of upcoming tender notices can create a level playing field for
+
+2. Knowledge of upcoming tender notices can create a level playing field for
 private sector, and be a useful resource for business owners.
+
+Here we are solving second problem.
 
 ### Install dependencies
 

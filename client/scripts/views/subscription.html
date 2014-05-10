@@ -209,7 +209,12 @@
         <hr class="ruler">
         <div class="pull-right">
           <a ng-click="lastPage = false" class="btn btn-primary btn-lg"> <i class="fa fa-chevron-circle-left"></i> Previous</a>
-          <a ng-click="subscribe()" class="btn btn-success btn-lg"> <i class="fa fa-check-circle-o"></i> Subscribe</a>
+
+          <a ng-click="subscribe()" class="btn btn-success btn-lg" ng-disabled="saving || form.$invalid">
+            <i class="fa fa-check-circle-o" ng-hide="saving"></i>
+            <i class="fa fa-spinner fa-spin ng-hide" ng-show="saving"></i>
+            <span>Subscribe</span>
+          </a>
         </div>
       </form>
       <div class="clearfix"></div>

@@ -1,5 +1,5 @@
 angular.module('myApp').controller('SubscriptionController',
-        function($scope, $routeParams) {
+        function($scope, Subscription) {
 
     $scope.lastPage = false;
 
@@ -128,12 +128,26 @@ angular.module('myApp').controller('SubscriptionController',
     $scope.locations = [];
     $scope.cities = [
       'All over India',
-      'Chennai',
       'Bangalore',
+      'Chennai',
       'Delhi',
       'Mumbai',
       'Pune',
       'Kolkatta'
     ];
+
+    $scope.subscribe = function () {
+      $scope.saving = true;
+      var subscription = new Subscription({
+          selections: $scope.selection,
+          location: $scope.location,
+          email: $scope.email
+         });
+      subscription.$save().then(function () {
+          $location.path('/success');
+      }).finally(function() {
+          $scope.saving = false;
+      });
+    }
 
 });

@@ -11,11 +11,20 @@ angular.module('myApp', [
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'scripts/views/home.html',
+                templateUrl: 'scripts/views/map.html',
+                controller: 'ProjectsMapController'
             })
-            .when('/hello', {
-                templateUrl: 'scripts/views/hello.html',
-                controller: 'ShowController'
+            .when('/projects', {
+                templateUrl: 'scripts/views/project-list.html',
+                controller: 'ProjectsListController'
+            })
+            .when('/projects/:id', {
+                templateUrl: 'scripts/views/project-show.html',
+                controller: 'ProjectShowController'
+            })
+
+            .when('/about', {
+                templateUrl: 'scripts/views/about.html',
             })
 
             .otherwise({redirectTo: function() { return '/'; }});

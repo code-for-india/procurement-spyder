@@ -1,5 +1,5 @@
 angular.module('myApp').controller('SubscriptionController',
-        function($scope, Subscription) {
+        function($scope, $location, Subscriptions) {
 
     $scope.lastPage = false;
 
@@ -138,9 +138,10 @@ angular.module('myApp').controller('SubscriptionController',
 
     $scope.subscribe = function () {
       $scope.saving = true;
-      var subscription = new Subscription({
+      var subscription = new Subscriptions({
           selections: $scope.selection,
           location: $scope.location,
+          fullname: $scope.fullname,
           email: $scope.email
          });
       subscription.$save().then(function () {

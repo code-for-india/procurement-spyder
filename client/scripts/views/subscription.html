@@ -193,15 +193,22 @@
         <div class="form-group">
           <label for="location" class="col-sm-3 control-label">Location</label>
           <div class="col-sm-6">
-            <select class="form-control" ng-model="location" ng-options="currOption for currOption in cities">
+            <select class="form-control" ng-model="location" ng-options="currOption for currOption in cities" required>
             </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fullname" class="col-sm-3 control-label">Full Name</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="fullname" ng-model="fullname" placeholder="your full name" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="email" class="col-sm-3 control-label">Email</label>
           <div class="col-sm-6">
-            <input type="email" class="form-control" id="email" ng-model="email" placeholder="Email">
+            <input type="email" class="form-control" id="email" ng-model="email" placeholder="your email address" required>
             <p class="help-block">We will keep your email private. We wont share with anyone.</p>
           </div>
         </div>

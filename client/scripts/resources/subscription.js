@@ -2,9 +2,9 @@
 // Subscription Resource
 //
 
-angular.module('myApp').factory('Subscription', function ($resource) {
+angular.module('myApp').factory('Subscriptions', function ($resource) {
 
-    var resource =  $resource('/subscription',
+    var resource =  $resource('/subscriptions',
                               {},
                               {});
 

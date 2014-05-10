@@ -6,7 +6,11 @@ body {
     padding-top: 51px;
     font-family: "Open Sans", "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #333;
-    background-image: url(/images/trianglify-background.svg);
+    background: url(/images/trianglify-background.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h1,

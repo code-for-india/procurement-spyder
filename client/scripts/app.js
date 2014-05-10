@@ -6,22 +6,13 @@ angular.module('myApp', [
     'ngResource',
     'ngCookies',
     'ngSanitize',
-    'ui.bootstrap',
-    'google-maps'
+    'ui.bootstrap'
     ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'scripts/views/map.html',
-                controller: 'ProjectsMapController'
-            })
-            .when('/projects', {
-                templateUrl: 'scripts/views/projects-list.html',
-                controller: 'ProjectsListController'
-            })
-            .when('/projects/:id', {
-                templateUrl: 'scripts/views/project-show.html',
-                controller: 'ProjectShowController'
+                templateUrl: 'scripts/views/subscription.html',
+                controller: 'SubscriptionController'
             })
 
             .when('/about', {

@@ -1,0 +1,10 @@
+$icon-font-path: "/bower_components/bootstrap-sass/vender/assets/fonts/";
+
+@import 'bootstrap-sass/vendor/assets/stylesheets/bootstrap';
+@import "font-awesome/scss/font-awesome";
+
+@import "variables";
+@import "header";
+@import "footer";
+@import "base";
+@import "sticky_footer";

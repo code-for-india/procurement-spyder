@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <meta name="description" content="Your description">
+    <link rel="stylesheet" href="/css/app.css" type="text/css" />
+</head>
+
+<body>
+    <div ng-include="'scripts/views/header.html'"></div>
+
+    <div id="wrap">
+      <div class="app-progress" ng-hide="true">
+          <p class="lead"> Loading...</p>
+      </div>
+
+      <div ng-view=''></div>
+    </div>
+
+    <section id="footer" class="footer">
+        <div class="container text-center">
+            <p class="row">
+                <span>Built with <i class="fa fa-heart love"></i> in Chennai</span>
+            </p>
+        </div>
+    </section>
+
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/showcontroller.js"></script>
+    <script src="scripts/resources/sample.js"></script>
+</body>
+</html>

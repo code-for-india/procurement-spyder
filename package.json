@@ -1,0 +1,20 @@
+{
+  "name": "app-name",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.5.0",
+    "gulp-util": "~2.2.9",
+    "tiny-lr": "~0.0.5",
+    "gulp-livereload": "~0.1.1",
+    "gulp-csso": "~0.2.3",
+    "gulp-clean": "~0.2.4",
+    "gulp-concat": "~2.1.7",
+    "gulp-cache": "~0.1.1",
+    "gulp-ruby-sass": "~0.3.0",
+    "gulp-size": "~0.1.2"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

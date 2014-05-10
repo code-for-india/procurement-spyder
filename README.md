@@ -1,6 +1,15 @@
-# Hacker Boilerplate
+# Follow The Money
 
-Boilerplate code for hacker who want to hack with Python, MongoDB and AngularJS
+Money from World Bank supported projects impacts citizens and businesses directly
+through the contracts that are awarded for public goods or services - such as
+for laying roads or building schools. Surprisingly, not many many know about
+these contracts we’re investing in, even when they represent large amounts of
+public money meant for their neighbourhood.
+
+* Citizen oversight of who gets this money to do what and where can deter
+corruption and improve quality of delivery.
+* Knowledge of upcoming tender notices can create a level playing field for
+private sector, and be a useful resource for business owners.
 
 ### Install dependencies
 
@@ -23,6 +32,8 @@ To compile and watch for sass file changes
 
     gulp watch
 
-### Run python server
+### Run application
 
+    export PYTHONPATH=$(pwd)/server/
+    mongod
     python server.py

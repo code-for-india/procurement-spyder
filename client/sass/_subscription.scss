@@ -1,0 +1,45 @@
+// Projects
+
+.container-medium {
+  max-width: 810px;
+}
+
+.brand {
+  text-align: center;
+  text-shadow: 1px 1px 1px #ebebeb;
+
+  a {
+    color: #333;
+  }
+}
+
+.heading {
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 10px;
+  font-size: 24px;
+  line-height: 28px;
+  word-wrap: break-word;
+  background-color: #f0e8dd;
+  margin: -20px -20px 20px;
+  padding: 20px 0;
+}
+
+.subheading {
+  color: #f39c12;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.box {
+  display: block;
+  background: #fff;
+  padding: 20px;
+  border-radius: 3px;
+  margin: 10px 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.help-block {
+  font-size: 12px;
+}

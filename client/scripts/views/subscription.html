@@ -1,0 +1,230 @@
+<div class="container container-medium">
+  <h1 class="brand"><a href="#/">Procurement Spy</a></h1>
+  <div class="box">
+      <h2 class="heading">Subscribe for New Tender</h2>
+      <form name="categories" ng-hide="lastPage">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in agriculture">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in publicAdministration">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in information">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in education">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in finance">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in health">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in energyAndMining">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in transportation">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in waterSanitation">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <h4 class="subheading">Agriculture, fishing, and forestry:</h4>
+        <div class="row">
+          <div class="col-sm-6" ng-repeat="category in industryAndTrade">
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="selectedCategories[]"
+                  value="{{category}}"
+                  ng-checked="selection.indexOf(category) > -1"
+                  ng-click="toggleSelection(category)"
+                > {{category}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr class="ruler">
+
+        <div class="pull-right">
+          <a ng-click="lastPage = true" class="btn btn-primary btn-lg">Next <i class="fa fa-chevron-circle-right"></i></a>
+        </div>
+      </form>
+      <form class="form-horizontal" name="name" ng-show="lastPage">
+
+        <div class="form-group">
+          <label for="location" class="col-sm-3 control-label">Location</label>
+          <div class="col-sm-6">
+            <select class="form-control" ng-model="location" ng-options="currOption for currOption in states" required>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fullname" class="col-sm-3 control-label">Full Name</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="fullname" ng-model="fullname" placeholder="your full name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="col-sm-3 control-label">Email</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" id="email" ng-model="email" placeholder="your email address" required>
+            <p class="help-block">We will keep your email private. We wont share with anyone.</p>
+          </div>
+        </div>
+
+        <hr class="ruler">
+        <div class="pull-right">
+          <a ng-click="lastPage = false" class="btn btn-primary btn-lg"> <i class="fa fa-chevron-circle-left"></i> Previous</a>
+
+          <a ng-click="subscribe()" class="btn btn-success btn-lg" ng-disabled="saving || form.$invalid">
+            <i class="fa fa-check-circle-o" ng-hide="saving"></i>
+            <i class="fa fa-spinner fa-spin ng-hide" ng-show="saving"></i>
+            <span>Subscribe</span>
+          </a>
+        </div>
+      </form>
+      <div class="clearfix"></div>
+      <br>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import json
 client = MongoClient('mongodb://localhost:27017/')
 db = client['worldbank']
 projects = db['projects']
+procurements = db['procurements']
 
 def create_projects(projects_array):
 	dict_projects_array = json.loads(projects_array)
@@ -17,6 +18,16 @@ def create_projects(projects_array):
 
 def get_all_projects():
 	return '[' + ', '.join([json.dumps(result, default=json_util.default) for result in projects.find()]) + ']'
+
+def create_procurement(procurement):
+	dict_procurement = json.loads(procurement)
+	procurements.save(dict_procurement)
+	#TODO check if project got saved
+	return procurement
+
+def get_all_procurements():
+	return '[' + ', '.join([json.dumps(result, default=json_util.default) for result in procurements.find()]) + ']'
+
 
 	
 	 

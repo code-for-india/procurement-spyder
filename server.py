@@ -17,5 +17,22 @@ def projects():
 	elif request.method == 'GET':
 		return database.get_all_projects()
 
+@app.route('/comments', methods=["POST", "GET"])
+def comments():
+	'''
+	Function to add comment and read comments
+	'''
+	pass
+
+@app.route('/procurements', methods=["POST", "GET"])
+def procurements():
+	'''
+	Function to create procurement/get procurements
+	'''
+	if request.method == 'POST':
+		return database.create_procurement(request.data), 201	
+	elif request.method == 'GET':
+		return database.get_all_procurements()
+
 if __name__ == '__main__':
 	app.run(debug = True, host = '0.0.0.0', port = 8000)

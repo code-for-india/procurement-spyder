@@ -37,6 +37,7 @@ def procurements():
 			return '', 409
 		proc_dict = json.loads(proc_resp)
 		subscribers = database.get_subscribers(proc_dict)
+		print 'SUBSCRIBERS-------------', subscribers
 		if subscribers:
 			send_subscription_mail(subscribers, proc_dict)
 		return proc_resp, 201
@@ -71,7 +72,7 @@ def send_welcome_mail(email):
 	body = render_template('welcome-template.html')
 	sendmail([email], [], 'Your subscription has been confirmed', body)
  
-def send_subcription_mail(email_list, procurement):
+def send_subscription_mail(email_list, procurement):
 	body = render_template('subscription-template.html', procurement)
 	sendmail([], email_list, 'New Procurement: %s' % procurement['title'] , body)
 

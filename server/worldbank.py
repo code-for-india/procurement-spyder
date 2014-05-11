@@ -7,7 +7,7 @@ import json
 from bson import json_util
 from BeautifulSoup import BeautifulSoup
 
-COUNT=100
+COUNT=10
 
 def main():
 	push_to_db(pull_from_worldbank())

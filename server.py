@@ -73,7 +73,7 @@ def send_welcome_mail(email):
 	sendmail([email], [], 'Your subscription has been confirmed', body)
  
 def send_subscription_mail(email_list, procurement):
-	body = render_template('subscription-template.html', name=procurement['title'])
+	body = render_template('subscription-template.html', name=procurement['title'], url=procurement['proc_url'])
 	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)
 
 if __name__ == '__main__':

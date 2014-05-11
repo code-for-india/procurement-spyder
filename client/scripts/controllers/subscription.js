@@ -167,7 +167,7 @@ angular.module('myApp').controller('SubscriptionController',
     $scope.subscribe = function () {
       $scope.saving = true;
       var subscription = new Subscriptions({
-          selections: $scope.selection,
+          sectors: $scope.selection,
           location: $scope.location,
           fullname: $scope.fullname,
           email: $scope.email

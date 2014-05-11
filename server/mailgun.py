@@ -13,7 +13,7 @@ def send_simple_message(mydata):
 
 def get_data():
 	return {
-				"from": "Procurement Spy<postmaster@sandbox381bc65cf9a0430cb057afb272d83c3a.mailgun.org>",
+				"from": "Procurement Spyder<postmaster@sandbox381bc65cf9a0430cb057afb272d83c3a.mailgun.org>",
 				"to": "Dheeraj <fizerkhan@gmail.com>",
 				#"cc": ["Dj <dheerajjoshi@outlook.com>","Joshi <dheerajjoshi1991@yahoo.co.in>"],
 				#"bcc": ["Dj <dheerajjoshi@outlook.com>"],

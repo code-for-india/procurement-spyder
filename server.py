@@ -74,7 +74,8 @@ def send_welcome_mail(email):
  
 def send_subscription_mail(email_list, procurement):
 	body = render_template('subscription-template.html', name=procurement['title'])
-	sendmail([], email_list, 'New Procurement: %s' % procurement['title'] , body)
+	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)
 
 if __name__ == '__main__':
 	app.run(debug = True, host = '0.0.0.0', port = 8000)
+

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import database
 import mailgun
+import json
 app = Flask(__name__, static_folder='client', static_url_path='')
 
 @app.route('/')
@@ -34,9 +35,10 @@ def procurements():
 		proc_resp = database.create_procurement(request.data)
 		if not proc_resp:
 			return '', 409
-		subscribers = database.get_subscribers(proc_resp)
+		proc_dict = json.loads(proc_resp)
+		subscribers = database.get_subscribers(proc_dict)
 		if subscribers:
-			send_subscription_mail(subscribers, json.loads(proc_resp))
+			send_subscription_mail(subscribers, proc_dict)
 		return proc_resp, 201
 	elif request.method == 'GET':
 		return database.get_all_procurements()

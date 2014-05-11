@@ -7,7 +7,7 @@ import json
 from bson import json_util
 from BeautifulSoup import BeautifulSoup
 
-COUNT=200
+COUNT=10
 
 def main():
 	push_to_db(pull_from_worldbank())
@@ -71,8 +71,7 @@ def pull_procurements():
 		req = urllib2.Request(url, data)
 		try:
 			response = urllib2.urlopen(req)
-		except HTTPError, e:
-			print e.f.read()
+		except urllib2.HTTPError, e:
 			retry = retry - 1
 			continue
 
@@ -93,25 +92,26 @@ def push_proc_info(proc_info):
 		req = urllib2.Request(db_url, proc_info, {'Content-Type':'application/json'})
 		try:
 			response = urllib2.urlopen(req)
+			print response.read()
 			retry = 0
-		except HTTPError, e:
-			print e.f.read()
+		except urllib2.HTTPError, e:
+			pass
 		retry = retry - 1
-	print response.read()
+
 
 def get_proc_info(url):
 	retry = 5
+	proc_info = {}
 	while retry > 0:
 		req = urllib2.Request(url)
 		try:
 			response = urllib2.urlopen(req)
-		except HTTPError, e:
-			e.f.read()
+			retry = 0
+		except urllib2.HTTPError, e:
 			retry = retry - 1
 			continue
 		resphtml = response.read()
 		soup = BeautifulSoup(resphtml)
-		proc_info = {}
 		try:	
 			proc_info['city'] = soup.findAll('td', text='City')[0].findNext().text
 			retry = 0

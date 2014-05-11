@@ -41,12 +41,15 @@ def create_subscription(subscription):
 def get_subscribers(procurement):
 	subscribers = []
 	resultset = projects.find({'id':procurement['projectid']}, {'sector':1})
-	if not resultset:
+	if not resultset or not resultset.count():
 		return subscribers
 	
 	project = resultset[0]
+	print 'PROJECT', project
 	sectors = map(lambda x: x['Name'], project['sector'])		
-	selected_subscribers = subscribers.find({'sectors':{'$in' : sectors}}, {'email':1, '_id':0})
+	print 'SECTORS', sectors
+	selected_subscribers = subscriptions.find({'sectors':{'$in' : sectors}}, {'email':1, '_id':0})
+	print 'SELECTED_SUB', selected_subscribers
 	return [email for email in set(map(lambda x: x['email'], selected_subscribers))]
 	
 	

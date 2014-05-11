@@ -116,7 +116,6 @@ def get_proc_info(url):
 			proc_info['city'] = soup.findAll('td', text='City')[0].findNext().text
 			retry = 0
 		except IndexError, e:
-			print e
 			retry = retry - 1
 			continue
 		proc_info['proc_id'] = str(urlparse.parse_qs(url.split('?')[1])['id'][0])

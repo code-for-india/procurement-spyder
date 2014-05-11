@@ -31,7 +31,11 @@ def procurements():
 	Function to create procurement/get procurements
 	'''
 	if request.method == 'POST':
-		return database.create_procurement(request.data), 201	
+		proc_resp = database.create_procurement(request.data)
+		subscribers = get_subscribers(proc_resp)
+		if subscribers:
+			send_subscription_mail(subscribers, json.loads(proc_resp))
+		return proc_resp, 201
 	elif request.method == 'GET':
 		return database.get_all_procurements()
 
@@ -40,21 +44,32 @@ def subscriptions():
 	'''
 	Function to create subscriptions
 	'''
-	print request.data
-	return database.create_subscription(request.data), 201
+	subscription_resp = database.create_subscription(request.data)
+	subscription = json.loads(subscription_resp)
+	send_welcome_mail(subscription['email'])
+	return subscription_resp, 201
 
 
 #GET /sendmail
 @app.route('/sendmail', methods=["GET"])
-def sendmail():
+def sendmail(to_list, bcc_list, subject, body):
 	mail = {
 			"from": "Procurement Spy<postmaster@sandbox381bc65cf9a0430cb057afb272d83c3a.mailgun.org>",
-	    "to": 'fizerkhan@gmail.com',
-	    "subject": 'You are awesome',
-	    "html": render_template('mail-template.html', projectName='Roadsow')
+			"to": to_list,
+	    	"bcc": bcc_list,
+	    	"subject": subject,
+	    	"html": body
 			}
 	mailgun.send_simple_message(mail)
 	return ''
+
+def send_welcome_mail(email):
+	body = render_template('welcome-template.html')
+	sendmail([email], [], 'Your subscription has been confirmed', body)
+ 
+def send_subcription_mail(email_list, procurement):
+	body = render_template('subscription-template.html', procurement)
+	sendmail([], email_list, 'New Procurement: %s' % procurement['title'] , body)
 
 if __name__ == '__main__':
 	app.run(debug = True, host = '0.0.0.0', port = 8000)

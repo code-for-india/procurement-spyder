@@ -51,7 +51,7 @@ def subscriptions():
 	'''
 	subscription_resp = database.create_subscription(request.data)
 	subscription = json.loads(subscription_resp)
-	send_welcome_mail(subscription['email'])
+	send_welcome_mail(subscription['email'], ','.join(subscription['sectors']))
 	return subscription_resp, 201
 
 
@@ -68,14 +68,13 @@ def sendmail(to_list, bcc_list, subject, body):
 	mailgun.send_simple_message(mail)
 	return ''
 
-def send_welcome_mail(email):
-	body = render_template('welcome-template.html')
+def send_welcome_mail(email, sectors):
+	body = render_template('welcome-template.html', sectors=sectors)
 	sendmail([email], [], 'Your subscription has been confirmed', body)
- 
+
 def send_subscription_mail(email_list, procurement):
 	body = render_template('subscription-template.html', name=procurement['title'], url=procurement['proc_url'])
 	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)
 
 if __name__ == '__main__':
 	app.run(debug = True, host = '0.0.0.0', port = 8000)
-

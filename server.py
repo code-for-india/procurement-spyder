@@ -32,7 +32,9 @@ def procurements():
 	'''
 	if request.method == 'POST':
 		proc_resp = database.create_procurement(request.data)
-		subscribers = get_subscribers(proc_resp)
+		if not proc_resp:
+			return '', 409
+		subscribers = database.get_subscribers(proc_resp)
 		if subscribers:
 			send_subscription_mail(subscribers, json.loads(proc_resp))
 		return proc_resp, 201

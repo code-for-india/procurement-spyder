@@ -22,7 +22,10 @@ def get_all_projects():
 
 def create_procurement(procurement):
 	dict_procurement = json.loads(procurement)
-	procurements.save(dict_procurement)
+	dict_procurement['_id'] = dict_procurement['proc_id']
+	ret = procurements.save(dict_procurement)
+	if not ret:
+		return None
 	#TODO check if project got saved
 	return procurement
 
@@ -34,3 +37,16 @@ def create_subscription(subscription):
 	subscriptions.save(dict_form_data)
 	#TODO check if subscription got saved
 	return subscription
+
+def get_subscribers(procurement):
+	subscribers = []
+	resultset = projects.find({'id':procurement['projectid']}, {'sector':1})
+	if not resultset:
+		return subscribers
+	
+	project = resultset[0]
+	sectors = map(lambda x: x['Name'], project['sector'])		
+	selected_subscribers = subscribers.find({'sectors':{'$in' : sectors}}, {'email':1, '_id':0})
+	return [email for email in set(map(lambda x: x['email'], selected_subscribers))]
+	
+	

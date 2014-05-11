@@ -9,8 +9,8 @@ public money meant for their neighbourhood.
 
 ### Proposed Solutions
 
-Procurement Spyder will have knowledge of upcoming tender notices can create a
-playing field for private sector. Business owners subscribe for the sectors and
+Procurement Spyder will have a knowledge of upcoming tender notices by
+crawling world bank's site every day. Business owners can subscribe with the sectors and
 location they are interested in. Procurement Spider notify business owners
 whenever there is new tender or procurements under subscribed locations and sectors.
 

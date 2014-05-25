@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 import database
 import mailgun
@@ -88,5 +89,9 @@ def send_subscription_mail(email_list, procurement):
 	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)
 
 if __name__ == '__main__':
-	#app.run(debug = True, host = '0.0.0.0', port = 8000)
-	app.run()
+	app_name = os.getenv('OPENSHIFT_APP_NAME')
+	# run in debug mode in development
+	if app_name is None:
+		app.run(debug = True, host = '0.0.0.0', port = 8000)
+	else:
+		app.run()

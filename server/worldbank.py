@@ -71,6 +71,7 @@ def pull_procurements():
 		req = urllib2.Request(url, data)
 		try:
 			response = urllib2.urlopen(req)
+			retry = 0
 		except urllib2.HTTPError, e:
 			retry = retry - 1
 			continue

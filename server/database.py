@@ -23,6 +23,9 @@ def get_all_projects():
 def create_procurement(procurement):
 	dict_procurement = json.loads(procurement)
 	dict_procurement['_id'] = dict_procurement['proc_id']
+	existing_procurement = procurements.find_one({'_id':dict_procurement['proc_id']})
+	if existing_procurement:
+		return None
 	ret = procurements.save(dict_procurement)
 	if not ret:
 		return None

@@ -5,6 +5,9 @@ import json
 app = Flask(__name__, static_folder='client', static_url_path='')
 
 @app.route('/')
+@app.route('/success')
+@app.route('/updated')
+@app.route('/unsubscribed')
 def index():
 	return app.send_static_file('index.html')
 

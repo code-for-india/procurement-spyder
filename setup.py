@@ -1,10 +1,10 @@
 from setuptools import setup
 
-setup(name='YourAppName',
+setup(name='Procurement Spyder',
       version='1.0',
-      description='OpenShift App',
-      author='Your Name',
-      author_email='example@example.com',
+      description='Track and Notify about new procurement in WorldBank site.',
+      author='Fizer Khan, Yogeswaran',
+      author_email='fizerkhan@gmail.com, yogeeswaran@gmail.com',
       url='http://www.python.org/sigs/distutils-sig/',
-#      install_requires=['Django>=1.3'],
+      install_requires=['Flask', 'MarkupSafe', 'pymongo', 'datetime', 'requests', 'BeautifulSoup'],
      )

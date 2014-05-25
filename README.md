@@ -1,6 +1,7 @@
 # Procurement Spyder
 
 ### Problem
+
 Money from World Bank supported projects impacts citizens and businesses directly
 through the contracts that are awarded for public goods or services - such as
 for laying roads or building schools. Surprisingly, not many many know about
@@ -37,6 +38,7 @@ To compile and watch for sass file changes
 
 ### Run application
 
-    export PYTHONPATH=$(pwd)/server/
+    source venv/bin/activate
     mongod
+    cd wsgi
     python server.py

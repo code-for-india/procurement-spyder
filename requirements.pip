@@ -1,4 +1,5 @@
 flask
 pymongo
-json
 datetime
+requests
+BeautifulSoup

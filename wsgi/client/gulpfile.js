@@ -14,19 +14,19 @@ var server = lr();
 
 // Styles
 gulp.task('styles', function () {
-    return gulp.src('client/sass/app.scss')
+    return gulp.src('sass/app.scss')
         .pipe(sass({
           style: 'expanded',
-          loadPath: ['client/bower_components']
+          loadPath: ['bower_components']
         }))
         .pipe(csso())
         .pipe(livereload(server))
         .pipe(size())
-        .pipe(gulp.dest('client/css'));
+        .pipe(gulp.dest('css'));
 });
 
 gulp.task('clean', function () {
-    return gulp.src(['client/css'], {read: false}).pipe(clean());
+    return gulp.src(['css'], {read: false}).pipe(clean());
 });
 
 // Build
@@ -46,6 +46,6 @@ gulp.task('watch', function () {
         };
 
         // Watch .scss files
-        gulp.watch('client/sass/**/*.scss', ['styles']);
+        gulp.watch('sass/**/*.scss', ['styles']);
     });
 });

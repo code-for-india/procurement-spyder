@@ -84,7 +84,7 @@ angular.module('myApp').controller('SubscriptionController',
       'Ports, waterways and shipping',
       'Railways',
       'Urban Transport',
-      'Rural and Inter-UrbanRoads and Highways',
+      'Rural and Inter-Urban Roads and Highways',
     ];
 
     $scope.waterSanitation = [

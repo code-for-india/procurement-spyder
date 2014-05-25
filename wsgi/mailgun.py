@@ -1,9 +1,9 @@
 import requests
 import os
 def send_simple_message(mydata):
+    MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')
     return requests.post(
         "https://api.mailgun.net/v2/chennainerd.in/messages",
-	MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')
         auth=("api", MAILGUN_API_KEY),
         data={"from": mydata.get('from'),
               "to": mydata.get('to'),

@@ -1,10 +1,12 @@
+import os
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
 from bson.objectid import ObjectId
 from bson import json_util
 import json
-
-client = MongoClient('mongodb://localhost:27017/')
+DB_HOST=os.getenv('OPENSHIFT_MONGODB_DB_HOST')
+DB_PORT=os.getenv('OPENSHIFT_MONGODB_DB_PORT')
+client = MongoClient('mongodb://%s:%s/' % (DB_HOST, DB_PORT))
 db = client['worldbank']
 projects = db['projects']
 procurements = db['procurements']

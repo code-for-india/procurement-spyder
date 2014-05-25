@@ -1,9 +1,17 @@
 ## Tasks
 
-1. Change Location to Locations. Support multiple location
-2. Change front end ui and update about, vidoe and description.
-3. Unsubscribe.
-4. Update subscription.
-5. Cron job in openshift
-6. Update mail templates.
-7. Run in debug mode in localhost.
+* Change Location to Locations. Support multiple location
+* Change front end ui and update about, vidoe and description.
+* Unsubscribe.
+* Update subscription.
+* Cron job in openshift for every 6 hours
+* Check whether new procurement intitate subscription mail
+* Send subscription mail based on both location and sector
+* Pass id to all mail templates
+
+### Done
+
+* Updated mailgun details
+* Updated subscription update
+* Update mail templates.
+* Run in debug mode in localhost.

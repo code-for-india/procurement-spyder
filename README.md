@@ -43,3 +43,7 @@ To compile and watch for sass file changes
     mongod
     cd wsgi
     python server.py
+
+### Deploy to openshift
+
+    $ git push openshift master

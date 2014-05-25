@@ -7,6 +7,8 @@ import json
 
 DB_URL = os.getenv('OPENSHIFT_MONGODB_DB_URL', 'mongodb://localhost:27017/')
 DB_NAME = os.getenv('OPENSHIFT_APP_NAME', 'worldbank')
+print DB_URL
+print DB_NAME
 client = MongoClient('%s%s' % (DB_URL, DB_NAME))
 db = client['worldbank']
 projects = db['projects']

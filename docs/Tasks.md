@@ -6,3 +6,4 @@
 4. Update subscription.
 5. Deploy
 6. Update mail templates.
+7. Run in debug mode in localhost

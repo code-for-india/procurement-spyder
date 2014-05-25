@@ -4,8 +4,8 @@ from pymongo import ASCENDING, DESCENDING
 from bson.objectid import ObjectId
 from bson import json_util
 import json
-DB_HOST=os.getenv('OPENSHIFT_MONGODB_DB_HOST')
-DB_PORT=os.getenv('OPENSHIFT_MONGODB_DB_PORT')
+DB_HOST=os.getenv('OPENSHIFT_MONGODB_DB_HOST', 'localhost')
+DB_PORT=os.getenv('OPENSHIFT_MONGODB_DB_PORT', '27017')
 client = MongoClient('mongodb://%s:%s/' % (DB_HOST, DB_PORT))
 db = client['worldbank']
 projects = db['projects']

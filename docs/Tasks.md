@@ -5,3 +5,4 @@
 3. Unsubscribe
 4. Update subscription.
 5. Deploy
+6. Update mail templates.

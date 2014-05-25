@@ -4,9 +4,10 @@ from pymongo import ASCENDING, DESCENDING
 from bson.objectid import ObjectId
 from bson import json_util
 import json
-DB_HOST=os.getenv('OPENSHIFT_MONGODB_DB_HOST', 'localhost')
-DB_PORT=os.getenv('OPENSHIFT_MONGODB_DB_PORT', '27017')
-client = MongoClient('mongodb://%s:%s/' % (DB_HOST, DB_PORT))
+
+DB_URL = os.getenv('OPENSHIFT_MONGODB_DB_URL', 'mongodb://localhost:27017/')
+DB_NAME = os.getenv('OPENSHIFT_APP_NAME', 'worldbank')
+client = MongoClient('%s%s' % (DB_URL, DB_NAME))
 db = client['worldbank']
 projects = db['projects']
 procurements = db['procurements']
@@ -47,7 +48,7 @@ def create_subscription(subscription):
 		sectors.extend(dict_subscription.get('sectors'))
 		sectors = list(set(sectors))
 		prev_subscription['sectors'] = sectors
-		subscriptions.find_and_modify(query={'_id': sid}, 
+		subscriptions.find_and_modify(query={'_id': sid},
 					update={"$set": {"sectors": sectors}})
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
@@ -61,13 +62,11 @@ def get_subscribers(procurement):
 	resultset = projects.find({'id':procurement['projectid']}, {'sector':1})
 	if not resultset or not resultset.count():
 		return subscribers
-	
+
 	project = resultset[0]
 	print 'PROJECT', project
-	sectors = map(lambda x: x['Name'], project['sector'])		
+	sectors = map(lambda x: x['Name'], project['sector'])
 	print 'SECTORS', sectors
 	selected_subscribers = subscriptions.find({'sectors':{'$in' : sectors}}, {'email':1, '_id':0})
 	print 'SELECTED_SUB', selected_subscribers
 	return [email for email in set(map(lambda x: x['email'], selected_subscribers))]
-	
-	

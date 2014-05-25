@@ -38,6 +38,7 @@ To compile and watch for sass file changes
 
 ### Run application
 
+    export MAILGUN_API_KEY=copy_from_conf
     source venv/bin/activate
     mongod
     cd wsgi

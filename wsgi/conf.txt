@@ -1,0 +1,11 @@
+## Mailgun
+
+API KEY: export MAILGUN_API_KEY=key-5s36ap7vxhf0-98vg-p0nahpie5tbns9
+
+## MongoDB in openshift
+
+  Root User:      admin
+   Root Password: sVe3yGC2skqA
+   Database Name: procurement
+
+Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/

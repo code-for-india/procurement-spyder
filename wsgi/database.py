@@ -51,14 +51,9 @@ def create_subscription(subscription):
 		sectors = list(set(sectors))
 		locations = list(set(locations))
 		prev_subscription['sectors'] = sectors
-<<<<<<< HEAD
-		subscriptions.find_and_modify(query={'_id': sid},
-					update={"$set": {"sectors": sectors}})
-=======
 		prev_subscription['locations'] = locations
-		subscriptions.find_and_modify(query={'_id': sid}, 
+		subscriptions.find_and_modify(query={'_id': sid},
 					update={"$set": {"sectors": sectors, "locations": locations}})
->>>>>>> 8c402784fdf78508a40c605a14c20a6390f8669f
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
 		subscriptions.save(dict_subscription)

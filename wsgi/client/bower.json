@@ -1,5 +1,5 @@
 {
-  "name": "app-name",
+  "name": "Procurement Spyder",
   "private": true,
   "dependencies": {
     "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#v3.1.0",

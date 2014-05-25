@@ -63,7 +63,7 @@ def subscriptions():
 @app.route('/sendmail', methods=["GET"])
 def sendmail(to_list, bcc_list, subject, body):
 	mail = {
-			"from": "Procurement Spyder<postmaster@sandbox381bc65cf9a0430cb057afb272d83c3a.mailgun.org>",
+			"from": "Procurement Spyder <no-reply@chennainerd.in>",
 			"to": to_list,
 	    	"bcc": bcc_list,
 	    	"subject": subject,

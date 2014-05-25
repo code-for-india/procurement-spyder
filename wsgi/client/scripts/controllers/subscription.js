@@ -164,11 +164,12 @@ angular.module('myApp').controller('SubscriptionController',
       "Uttar Pradesh",
       "West Bengal"
     ];
+
     $scope.subscribe = function () {
       $scope.saving = true;
       var subscription = new Subscriptions({
           sectors: $scope.selection,
-          location: $scope.location,
+          locations: [$scope.locations],
           fullname: $scope.fullname,
           email: $scope.email
          });

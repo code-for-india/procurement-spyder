@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 import database
 import mailgun
 import json
@@ -53,15 +53,28 @@ def subscriptions():
 	'''
 	Function to create subscriptions
 	'''
-	subscription_resp, created = database.create_subscription(request.data)
+	subscription_resp, created, s_id = database.create_subscription(request.data)
 	subscription = json.loads(subscription_resp)
 	print subscription
 	if created:
-		send_welcome_mail(subscription['email'], ','.join(subscription['sectors']))
+		send_welcome_mail(subscription['email'], 
+			','.join(subscription['sectors']), 
+			','.join(subscription['locations']),
+			s_id)
 	else:
-		send_update_mail(subscription['email'], ','.join(subscription['sectors']))
+		send_update_mail(subscription['email'], 
+			','.join(subscription['sectors']),
+			','.join(subscription['locations']),
+			s_id)
 	return subscription_resp, 201
 
+@app.route('/unsubscribe/<_id>', methods=["GET"])
+def unsubscribe(_id):
+	'''
+	Function to unsubscribe
+	'''
+	database.delete_subscription(_id)
+	return redirect(url_for("index"))
 
 #GET /sendmail
 @app.route('/sendmail', methods=["GET"])
@@ -76,12 +89,12 @@ def sendmail(to_list, bcc_list, subject, body):
 	mailgun.send_simple_message(mail)
 	return ''
 
-def send_update_mail(email, sectors):
-	body = render_template('update-template.html', sectors=sectors)
+def send_update_mail(email, sectors, locations, s_id):
+	body = render_template('update-template.html', sectors=sectors, locations=locations, subscription_id=s_id)
 	sendmail([email], [], 'Your subscription has been updated', body)
 
-def send_welcome_mail(email, sectors):
-	body = render_template('welcome-template.html', sectors=sectors)
+def send_welcome_mail(email, sectors, locations, s_id):
+	body = render_template('welcome-template.html', sectors=sectors, locations=locations, subscription_id=s_id)
 	sendmail([email], [], 'Your subscription has been confirmed', body)
 
 def send_subscription_mail(email_list, procurement):

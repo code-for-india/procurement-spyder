@@ -43,7 +43,7 @@ def create_subscription(subscription):
 	dict_subscription = json.loads(subscription)
 	prev_subscription = subscriptions.find_one({'email': dict_subscription['email']})
 	if prev_subscription:
-		sid = prev_subscription.pop('_id')
+		s_id = prev_subscription.pop('_id')
 		sectors = prev_subscription.get('sectors', [])
 		locations = prev_subscription.get('locations', [])
 		sectors.extend(dict_subscription.get('sectors'))
@@ -52,14 +52,16 @@ def create_subscription(subscription):
 		locations = list(set(locations))
 		prev_subscription['sectors'] = sectors
 		prev_subscription['locations'] = locations
-		subscriptions.find_and_modify(query={'_id': sid},
+		subscriptions.find_and_modify(query={'_id': s_id},
 					update={"$set": {"sectors": sectors, "locations": locations}})
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
-		subscriptions.save(dict_subscription)
+		s_id = subscriptions.save(dict_subscription)
 		created = 1
-	#TODO check if subscription got saved
-	return subscription, created
+	return subscription, created, s_id
+
+def delete_subscription(subscription_id):
+	return subscriptions.find_and_modify(query={'_id': ObjectId(subscription_id)}, remove=True)
 
 def get_subscribers(procurement):
 	subscribers = []

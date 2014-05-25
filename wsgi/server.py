@@ -69,9 +69,9 @@ def sendmail(to_list, bcc_list, subject, body):
 	mail = {
 			"from": "Procurement Spyder <no-reply@chennainerd.in>",
 			"to": to_list,
-	    	"bcc": bcc_list,
-	    	"subject": subject,
-	    	"html": body
+	    "bcc": bcc_list,
+	    "subject": subject,
+	    "html": body
 			}
 	mailgun.send_simple_message(mail)
 	return ''

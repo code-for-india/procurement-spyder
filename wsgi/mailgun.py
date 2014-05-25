@@ -10,14 +10,13 @@ def send_simple_message(mydata):
               "cc": mydata.get('cc'),
               "bcc": mydata.get('bcc'),
               "subject": mydata.get('subject'),
-              #"text": mydata.get('text', ''),
               "html": mydata.get('html', '') })
 
 def get_data():
 	return {
 				"from": "Procurement Spyder <no-reply@chennainerd.in>",
-				"to": "Dheeraj <fizerkhan@gmail.com>",
-				#"cc": ["Dj <dheerajjoshi@outlook.com>","Joshi <dheerajjoshi1991@yahoo.co.in>"],
+				"to": "Fizer Khan <fizerkhan@gmail.com>",
+				"cc": ["Yogi <yogeeswaran@gmail.com>","Joshi <dheerajjoshi1991@yahoo.co.in>"],
 				#"bcc": ["Dj <dheerajjoshi@outlook.com>"],
 				"subject": "Hello World",
 				#"text": "Testing Text :::: 1234567890"

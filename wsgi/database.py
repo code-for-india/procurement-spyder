@@ -23,7 +23,7 @@ def get_all_projects():
 def create_procurement(procurement):
 	dict_procurement = json.loads(procurement)
 	dict_procurement['_id'] = dict_procurement['proc_id']
-	existing_procurement = procurements.find_one({'_id':dict_procurement['proc_id']})
+	existing_procurement = procurements.find_one({'_id':dict_procurement['proc_id']}, {'_id':0})
 	if existing_procurement:
 		return None
 	ret = procurements.save(dict_procurement)
@@ -36,10 +36,23 @@ def get_all_procurements():
 	return '[' + ', '.join([json.dumps(result, default=json_util.default) for result in procurements.find()]) + ']'
 
 def create_subscription(subscription):
-	dict_form_data = json.loads(subscription)
-	subscriptions.save(dict_form_data)
+	created = 0
+	dict_subscription = json.loads(subscription)
+	prev_subscription = subscriptions.find_one({'email': dict_subscription['email']})
+	if prev_subscription:
+		sid = prev_subscription.pop('_id')
+		sectors = prev_subscription.get('sectors', [])
+		sectors.extend(dict_subscription.get('sectors'))
+		sectors = list(set(sectors))
+		prev_subscription['sectors'] = sectors
+		subscriptions.find_and_modify(query={'_id': sid}, 
+					update={"$set": {"sectors": sectors}})
+		subscription = json.dumps(prev_subscription, default=json_util.default)
+	else:
+		subscriptions.save(dict_subscription)
+		created = 1
 	#TODO check if subscription got saved
-	return subscription
+	return subscription, created
 
 def get_subscribers(procurement):
 	subscribers = []

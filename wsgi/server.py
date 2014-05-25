@@ -49,9 +49,13 @@ def subscriptions():
 	'''
 	Function to create subscriptions
 	'''
-	subscription_resp = database.create_subscription(request.data)
+	subscription_resp, created = database.create_subscription(request.data)
 	subscription = json.loads(subscription_resp)
-	send_welcome_mail(subscription['email'], ','.join(subscription['sectors']))
+	print subscription
+	if created:
+		send_welcome_mail(subscription['email'], ','.join(subscription['sectors']))
+	else:
+		send_update_mail(subscription['email'], ','.join(subscription['sectors']))
 	return subscription_resp, 201
 
 
@@ -67,6 +71,10 @@ def sendmail(to_list, bcc_list, subject, body):
 			}
 	mailgun.send_simple_message(mail)
 	return ''
+
+def send_update_mail(email, sectors):
+	body = render_template('update-template.html', sectors=sectors)
+	sendmail([email], [], 'Your subscription has been updated', body)
 
 def send_welcome_mail(email, sectors):
 	body = render_template('welcome-template.html', sectors=sectors)

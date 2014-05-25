@@ -19,5 +19,13 @@ angular.module('myApp', [
                 templateUrl: 'scripts/views/subscription-success.html',
             })
 
+            .when('/updated', {
+                templateUrl: 'scripts/views/subscription-updated.html',
+            })
+
+            .when('/unsubscribed', {
+                templateUrl: 'scripts/views/subscription-deleted.html',
+            })
+
             .otherwise({redirectTo: function() { return '/'; }});
     });

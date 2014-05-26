@@ -7,10 +7,10 @@
 * Cron job in openshift for every 6 hours
 * Check whether new procurement intitate subscription mail
 * Send subscription mail based on both location and sector
-* Pass id to all mail templates for unsubscribe link
 
 ### Done
 
+* Pass id to all mail templates for unsubscribe link
 * Updated mailgun details
 * Updated subscription update
 * Update mail templates.

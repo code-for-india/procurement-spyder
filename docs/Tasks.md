@@ -7,7 +7,7 @@
 * Send subscription mail based on both location and sector
 * Subscription does not work properly
 * Add space in locations and sectors array in the mail
-* Push it to DB has to be changed.
+* Push it to DB in world bank scrawling has to be changed.
 
 ### Done
 

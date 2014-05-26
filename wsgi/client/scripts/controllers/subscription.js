@@ -108,24 +108,23 @@ angular.module('myApp').controller('SubscriptionController',
     ];
 
     // selected fruits
-    $scope.selection = [];
+    $scope.selections = [];
 
-    // toggle selection for a given fruit by name
+    // toggle selections for a given fruit by name
     $scope.toggleSelection = function toggleSelection(category) {
-      var idx = $scope.selection.indexOf(category);
+      var idx = $scope.selections.indexOf(category);
 
       // is currently selected
       if (idx > -1) {
-        $scope.selection.splice(idx, 1);
+        $scope.selections.splice(idx, 1);
       }
 
       // is newly selected
       else {
-        $scope.selection.push(category);
+        $scope.selections.push(category);
       }
     };
 
-    $scope.locations = [];
     $scope.states = [
       'All over India',
       "Andaman and Nicobar Islands",
@@ -165,19 +164,30 @@ angular.module('myApp').controller('SubscriptionController',
       "West Bengal"
     ];
 
+
+    var subscription = $scope.subscription = {
+        locations: [$scope.states[0]],
+        fullname: '',
+        email: ''
+    };
+
     $scope.subscribe = function () {
       $scope.saving = true;
-      var subscription = new Subscriptions({
-          sectors: $scope.selection,
-          locations: [$scope.locations],
-          fullname: $scope.fullname,
-          email: $scope.email
-         });
-      subscription.$save().then(function () {
+      subscription.sectors = $scope.selections;
+      var subscriptionsResource = new Subscriptions(subscription);
+      subscriptionsResource.$save().then(function () {
           $location.path('/success');
       }).finally(function() {
           $scope.saving = false;
       });
+    }
+
+    $scope.addLocation = function () {
+      subscription.locations.push('');
+    }
+
+    $scope.removeLocation = function ($index) {
+      subscription.locations.splice($index, 1);
     }
 
 });

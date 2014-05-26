@@ -7,6 +7,7 @@
 * Send subscription mail based on both location and sector
 * Add space in locations and sectors array in the mail
 * Push it to DB in world bank scrawling has to be changed.
+* Add ReCaptcha.
 
 ### Done
 

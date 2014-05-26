@@ -12,8 +12,8 @@
     "angular-sanitize": "~1.3.0",
     "angular-bootstrap": "~0.10.0",
     "font-awesome": "~4.0.3",
-    "angular-google-maps": "~1.0.18",
-    "icheck": "*"
+    "angular-re-captcha": "~0.0.3"
+
   },
 
   "devDependencies": {}

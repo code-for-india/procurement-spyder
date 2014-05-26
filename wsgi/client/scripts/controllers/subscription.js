@@ -175,12 +175,17 @@ angular.module('myApp').controller('SubscriptionController',
       $scope.saving = true;
       subscription.sectors = $scope.selections;
       var subscriptionsResource = new Subscriptions(subscription);
-      subscriptionsResource.$save().then(function (response) {
-        if (response.updated) {
-          return $location.path('/updated');
+      subscriptionsResource.$save().then(
+        function (response) {
+          if (response.updated) {
+            return $location.path('/updated');
+          }
+          $location.path('/success');
+        },
+        function (error) {
+          alert((error.data && error.data.message) || 'Error! Please check the fields.');
         }
-        $location.path('/success');
-      }).finally(function() {
+      ).finally(function() {
           $scope.saving = false;
       });
     }

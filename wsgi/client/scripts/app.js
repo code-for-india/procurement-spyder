@@ -6,9 +6,10 @@ angular.module('myApp', [
     'ngResource',
     'ngCookies',
     'ngSanitize',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'reCAPTCHA'
     ])
-    .config(function ($routeProvider, $locationProvider) {
+    .config(function ($routeProvider, $locationProvider, reCAPTCHAProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'scripts/views/subscription.html',
@@ -31,4 +32,12 @@ angular.module('myApp', [
 
             // use the HTML5 History API
 		        $locationProvider.html5Mode(true);
+
+            // Set recaptch public key
+            reCAPTCHAProvider.setPublicKey('6LfnLPQSAAAAAIHLspjC8C8PRrf1FlEqK_tes9WD');
+
+            // optional: gets passed into the Recaptcha.create call
+            reCAPTCHAProvider.setOptions({
+                theme: 'white'
+            });
     });

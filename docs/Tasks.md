@@ -1,8 +1,8 @@
 ## Tasks
 
 * Change front end ui and update about, vidoe and description.
-* Subscription does not work properly.
-* Update subscription. Update subscription page does not displayed after submit.
+* Subscription does not work properly in openshift.
+* Update subscription reponse. Return object has 'updated' to true
 * Cron job in openshift for every 6 hours
 * Send subscription mail based on both location and sector
 * Add space in locations and sectors array in the mail

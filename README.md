@@ -24,26 +24,17 @@ Following steps are only needed one time
   3. pip install -r requirements.pip
 
 
-### Run gulp to watch and compile Sass
-
-To compile a sass
-
-    gulp
-
-To compile and watch for sass file changes
-
-    gulp watch
-
 ### Scrawl the World Bank Projects and Procurments
 
-
+    cd wsgi/
+    python worldbank.py
 
 ### Run application
 
     export MAILGUN_API_KEY=copy_from_conf
     source venv/bin/activate
     mongod
-    cd wsgi
+    cd wsgi/
     python server.py
 
 ### Deploy to openshift

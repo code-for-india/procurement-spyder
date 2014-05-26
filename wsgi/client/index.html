@@ -13,16 +13,21 @@
     <div ng-include="'scripts/views/header.html'"></div>
 
     <div id="wrap">
-      <div class="app-progress" ng-hide="true">
-          <p class="lead"> Loading...</p>
-      </div>
+      <div class="main-container">
+        <div class="app-progress" ng-hide="true">
+            <p class="lead"> Loading...</p>
+        </div>
 
-      <div ng-view=''></div>
+        <div ng-view=''></div>
+      </div>
     </div>
 
     <section id="footer" class="footer">
         <div class="container text-center">
-            <p class="row">
+            <p>
+              © Chennai Nerd 2014
+            </p>
+            <p>
                 <span>Built with <i class="fa fa-heart love"></i> in India</span>
             </p>
         </div>

@@ -6,6 +6,8 @@ import json
 app = Flask(__name__, static_folder='client', static_url_path='')
 
 @app.route('/')
+@app.route('/about')
+@app.route('/subscribe')
 @app.route('/success')
 @app.route('/updated')
 @app.route('/unsubscribed')

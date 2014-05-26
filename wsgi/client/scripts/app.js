@@ -12,6 +12,14 @@ angular.module('myApp', [
     .config(function ($routeProvider, $locationProvider, reCAPTCHAProvider) {
         $routeProvider
             .when('/', {
+                templateUrl: 'scripts/views/home.html',
+            })
+
+            .when('/about', {
+                templateUrl: 'scripts/views/about.html',
+            })
+
+            .when('/subscribe', {
                 templateUrl: 'scripts/views/subscription.html',
                 controller: 'SubscriptionController'
             })

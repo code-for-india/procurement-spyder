@@ -19,11 +19,9 @@ whenever there is new tender or procurements under subscribed locations and sect
 
 Following steps are only needed one time
 
-  1. npm install
-  2. bower install
-  3. virtualenv venv
-  4. source venv/bin/activate
-  5. pip install -r requirements.pip
+  1. virtualenv venv
+  2. source venv/bin/activate
+  3. pip install -r requirements.pip
 
 
 ### Run gulp to watch and compile Sass

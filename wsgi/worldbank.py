@@ -128,5 +128,5 @@ def get_proc_info(url):
 
 
 if __name__ == '__main__':
-	# main()
+	#main()
 	pull_procurements()

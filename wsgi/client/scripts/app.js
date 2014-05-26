@@ -8,7 +8,7 @@ angular.module('myApp', [
     'ngSanitize',
     'ui.bootstrap'
     ])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'scripts/views/subscription.html',
@@ -28,4 +28,7 @@ angular.module('myApp', [
             })
 
             .otherwise({redirectTo: function() { return '/'; }});
+
+            // use the HTML5 History API
+		        $locationProvider.html5Mode(true);
     });

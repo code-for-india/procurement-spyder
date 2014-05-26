@@ -57,24 +57,25 @@ def subscriptions():
 	subscription = json.loads(subscription_resp)
 	print subscription
 	if created:
-		send_welcome_mail(subscription['email'], 
-			','.join(subscription['sectors']), 
+		send_welcome_mail(subscription['email'],
+			','.join(subscription['sectors']),
 			','.join(subscription['locations']),
 			s_id)
 	else:
-		send_update_mail(subscription['email'], 
+		send_update_mail(subscription['email'],
 			','.join(subscription['sectors']),
 			','.join(subscription['locations']),
 			s_id)
 	return subscription_resp, 201
 
+# Unsubscribe
 @app.route('/unsubscribe/<_id>', methods=["GET"])
 def unsubscribe(_id):
 	'''
 	Function to unsubscribe
 	'''
 	database.delete_subscription(_id)
-	return redirect(url_for("index"))
+	return redirect('/unsubscribed')
 
 #GET /sendmail
 @app.route('/sendmail', methods=["GET"])

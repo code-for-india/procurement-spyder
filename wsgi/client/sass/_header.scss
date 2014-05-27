@@ -3,7 +3,7 @@
 .header {
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 2px solid #85db18;
 }
 
 .brand {
@@ -12,15 +12,12 @@
   padding-bottom: 19px;
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
-  font-size: 32px;
-
-  a {
-    color: #333;
-  }
+  line-height: 32px;
+  font-size: 26px;
+  color: #333;
 }
 
-.support-link {
-    text-transform: uppercase;
+.nav-pills > li > a {
+    font-size: 1.2em;
     font-weight: 500;
 }

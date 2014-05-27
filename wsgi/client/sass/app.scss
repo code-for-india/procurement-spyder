@@ -10,47 +10,5 @@ $icon-font-path: "/bower_components/bootstrap-sass/vender/assets/fonts/";
 @import "sticky_footer";
 
 // Modules
+@import "home";
 @import "subscription";
-
-.main-container {
-  padding-top: 30px;
-  background-color: #ecf0f1;
-}
-
-.marketing {
-  margin-top: -30px;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  text-align: center;
-  background: url(/images/trianglify-background.svg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.marketing-heading {
-  font-size: 30px;
-  line-height: 30px;
-  color: #34495e;
-  text-shadow: 2px 2px 3px rgba(255,255,255,0.4);
-}
-
-.marketing-subheading {
-  font-size: 20px;
-  line-height: 34px;
-  font-weight: 200;
-}
-
-.video-container {
-  text-align: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.team {
-  padding-bottom: 50px;
-  h4 {
-    margin: 20px auto 10px;
-  }
-}

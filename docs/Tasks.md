@@ -8,6 +8,7 @@
 * Add space in locations and sectors array in the mail
 * Push it to DB in world bank scrawling has to be changed.
 * Add ReCaptcha support in server side.
+* Check and Remove Boostrap tpl
 
 ### Done
 

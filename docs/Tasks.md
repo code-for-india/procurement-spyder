@@ -1,12 +1,12 @@
 ## Tasks
 
-* [Yogi] Send subscription mail based on both location and sector,
+* [Yogi] Send subscription mail based on both location and sector.
 * [Yogi] Push it to DB in world bank scrawling has to be changed.
-* [Yogi] Cron job in openshift for every 6 hours
-* [Yogi] Update subscription response. Return object has 'updated' to true
+* [Yogi] Update subscription response. Return object has 'updated' to true.
 * [Yogi] Added created_at and updated_at UTC date format.
 * [Yogi] Add space in locations and sectors array in the mail.
 * [Yogi] Add ReCaptcha support in server side.
+* [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
 * [Fizer] Check and Remove Boostrap tpl.
 * [Fizer] Create video

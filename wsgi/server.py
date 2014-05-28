@@ -60,13 +60,13 @@ def subscriptions():
 	print subscription
 	if created:
 		send_welcome_mail(subscription['email'],
-			','.join(subscription['sectors']),
-			','.join(subscription['locations']),
+			', '.join(subscription['sectors']),
+			', '.join(subscription['locations']),
 			s_id)
 	else:
 		send_update_mail(subscription['email'],
-			','.join(subscription['sectors']),
-			','.join(subscription['locations']),
+			', '.join(subscription['sectors']),
+			', '.join(subscription['locations']),
 			s_id)
 	return subscription_resp, 201
 

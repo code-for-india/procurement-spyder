@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
 from bson.objectid import ObjectId
@@ -42,6 +43,7 @@ def create_subscription(subscription):
 	created = 0
 	dict_subscription = json.loads(subscription)
 	prev_subscription = subscriptions.find_one({'email': dict_subscription['email']})
+	timenow = str(datetime.utcnow())
 	if prev_subscription:
 		s_id = prev_subscription.pop('_id')
 		sectors = prev_subscription.get('sectors', [])
@@ -52,11 +54,16 @@ def create_subscription(subscription):
 		locations = list(set(locations))
 		prev_subscription['sectors'] = sectors
 		prev_subscription['locations'] = locations
+		prev_subscription['updated_at'] = timenow
 		subscriptions.find_and_modify(query={'_id': s_id},
-					update={"$set": {"sectors": sectors, "locations": locations}})
+					update={"$set": {"sectors": sectors, 
+							 "locations": locations, 
+							 "updated_at": timenow}
+						})
 		prev_subscription['updated'] = True		
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
+		dict_subscription['create_at'] = timenow
 		s_id = subscriptions.save(dict_subscription)
 		created = 1
 	return subscription, created, s_id

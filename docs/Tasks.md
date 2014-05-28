@@ -3,7 +3,6 @@
 * [Yogi] Send subscription mail based on both location and sector.
 * [Yogi] Push it to DB in world bank scrawling has to be changed.
 * [Yogi] Cron job in openshift for every 6 hours
-* [Yogi] Added created_at and updated_at UTC date format.
 * [Yogi] Add ReCaptcha support in server side.
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
@@ -24,3 +23,4 @@
 * Run in debug mode in localhost.
 * Add space in locations and sectors array in the mail.
 * Update subscription response. Return object has 'updated' to true
+* Added created_at and updated_at UTC date format.

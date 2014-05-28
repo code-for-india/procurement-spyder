@@ -39,7 +39,7 @@ if recaptcha_private_key and recaptcha_public_key:
     is_solution_correct = recaptcha_client.is_solution_correct(
         request.data.captcha.response,
         request.data.captcha.challenge,
-        req.remote_addr
+        request.remote_addr
         )
   except RecaptchaUnreachableError as exc:
     raise Exception('reCAPTCHA is unreachable; please try again later')

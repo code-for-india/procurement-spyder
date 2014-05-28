@@ -54,6 +54,7 @@ def create_subscription(subscription):
 		prev_subscription['locations'] = locations
 		subscriptions.find_and_modify(query={'_id': s_id},
 					update={"$set": {"sectors": sectors, "locations": locations}})
+		prev_subscription['updated'] = True		
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
 		s_id = subscriptions.save(dict_subscription)

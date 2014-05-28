@@ -9,6 +9,7 @@
 * Push it to DB in world bank scrawling has to be changed.
 * Add ReCaptcha support in server side.
 * Check and Remove Boostrap tpl
+* Added created_at and updated_at UTC date format.
 
 ### Done
 

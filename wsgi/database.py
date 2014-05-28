@@ -63,13 +63,19 @@ def create_subscription(subscription):
 		prev_subscription['updated'] = True		
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
-		dict_subscription['create_at'] = timenow
+		dict_subscription['created_at'] = timenow
 		s_id = subscriptions.save(dict_subscription)
 		created = 1
 	return subscription, created, s_id
 
 def delete_subscription(subscription_id):
 	return subscriptions.find_and_modify(query={'_id': ObjectId(subscription_id)}, remove=True)
+
+def get_query(sectors, location):
+	query = {}
+	query['$and'] = [{'locations': {'$in': [location, 'All over India']}}, 
+			 {'sectors': {'$in': sectors}}] 
+	return query
 
 def get_subscribers(procurement):
 	subscribers = []
@@ -81,6 +87,9 @@ def get_subscribers(procurement):
 	print 'PROJECT', project
 	sectors = map(lambda x: x['Name'], project['sector'])
 	print 'SECTORS', sectors
-	selected_subscribers = subscriptions.find({'sectors':{'$in' : sectors}}, {'email':1, '_id':0})
+	#FIXME Instead of passing procurement['city'] it should be state(procurement['city'])
+	query = get_query(sectors, procurement['city'])
+	print 'QUERY', query
+	selected_subscribers = subscriptions.find(query, {'email':1, '_id':0})
 	print 'SELECTED_SUB', selected_subscribers
 	return [email for email in set(map(lambda x: x['email'], selected_subscribers))]

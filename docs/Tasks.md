@@ -1,18 +1,20 @@
 ## Tasks
 
-* Change front end ui and update about, vidoe and description.
-* Subscription does not work properly in openshift.
-* Update subscription reponse. Return object has 'updated' to true
-* Cron job in openshift for every 6 hours
-* Send subscription mail based on both location and sector
-* Add space in locations and sectors array in the mail
-* Push it to DB in world bank scrawling has to be changed.
-* Add ReCaptcha support in server side.
-* Check and Remove Boostrap tpl
-* Added created_at and updated_at UTC date format.
+* [Yogi] Send subscription mail based on both location and sector,
+* [Yogi] Push it to DB in world bank scrawling has to be changed.
+* [Yogi] Cron job in openshift for every 6 hours
+* [Yogi] Update subscription response. Return object has 'updated' to true
+* [Yogi] Added created_at and updated_at UTC date format.
+* [Yogi] Add space in locations and sectors array in the mail.
+* [Yogi] Add ReCaptcha support in server side.
+* [Yogi and Fizer] Subscription does not work properly in openshift.
+* [Fizer] Check and Remove Boostrap tpl.
+* [Fizer] Create video
+* [Fizer] Reply to Ankur and Code for india with the video
 
 ### Done
 
+* Change front end ui and update about, and description.
 * Change Location to Locations. Support multiple location
 * Check whether new procurement intitate subscription mail
 * Unsubscribe.

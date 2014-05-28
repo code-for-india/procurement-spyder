@@ -6,5 +6,6 @@ setup(name='Procurement Spyder',
       author='Fizer Khan, Yogeswaran',
       author_email='fizerkhan@gmail.com, yogeeswaran@gmail.com',
       url='http://www.python.org/sigs/distutils-sig/',
-      install_requires=['Flask', 'MarkupSafe', 'pymongo', 'datetime', 'requests', 'BeautifulSoup'],
+      install_requires=['Flask', 'MarkupSafe', 'pymongo', 'datetime',
+                        'requests', 'BeautifulSoup', 'recaptcha-client'],
      )

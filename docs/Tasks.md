@@ -7,12 +7,12 @@
 * [Yogi] Add ReCaptcha support in server side.
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
-* [Fizer] Check and Remove Boostrap tpl.
 * [Fizer] Create video
 * [Fizer] Reply to Ankur and Code for india with the video
 
 ### Done
 
+* [Fizer] Check and Remove Boostrap tpl.
 * Change front end ui and update about, and description.
 * Change Location to Locations. Support multiple location
 * Check whether new procurement intitate subscription mail
@@ -23,3 +23,30 @@
 * Update mail templates.
 * Run in debug mode in localhost.
 * Add space in locations and sectors array in the mail.
+
+
+## Recaptcha code
+
+from recaptcha import RecaptchaClient
+
+recaptcha_private_key =  os.getenv('RECAPTCHA_PRIVATE_KEY')
+recaptcha_public_key =  os.getenv('RECAPTCHA_PUBLIC_KEY')
+
+if recaptcha_private_key and recaptcha_public_key:
+  recaptcha_client = RecaptchaClient(recaptcha_public_key, recaptcha_public_key)
+  try:
+    is_solution_correct = recaptcha_client.is_solution_correct(
+        request.data.captcha.response,
+        request.data.captcha.challenge,
+        req.remote_addr
+        )
+  except RecaptchaUnreachableError as exc:
+    raise Exception('reCAPTCHA is unreachable; please try again later')
+  except RecaptchaException as exc:
+    raise exc
+  else:
+    if !is_solution_correct:
+      raise Exception('Invalid solution to CAPTCHA challenge')
+
+  return true
+  

@@ -4,9 +4,9 @@
 angular.module('myApp', [
     'ngRoute',
     'ngResource',
-    'ngCookies',
     'ngSanitize',
-    'ui.bootstrap',
+    // 'ngCookies',
+    // 'ui.bootstrap',
     'reCAPTCHA'
     ])
     .config(function ($routeProvider, $locationProvider, reCAPTCHAProvider) {

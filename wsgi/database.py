@@ -30,7 +30,7 @@ def save_procurement(procurement):
 	if existing_procurement:
 		return None
 	procurements.save(procurement)
-	subscribers = database.get_subscribers(procurement)
+	subscribers = get_subscribers(procurement)
 	print 'SUBSCRIBERS-------------', subscribers
 	if subscribers:
 		mailer.send_subscription_mail(subscribers, procurement)

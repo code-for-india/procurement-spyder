@@ -40,9 +40,9 @@ def save_procurement(procurement):
 def get_all_procurements():
 	return '[' + ', '.join([json.dumps(result, default=json_util.default) for result in procurements.find()]) + ']'
 
-def create_subscription(subscription):
+def create_subscription(dict_subscription):
 	created = 0
-	dict_subscription = json.loads(subscription)
+
 	prev_subscription = subscriptions.find_one({'email': dict_subscription['email']})
 	timenow = str(datetime.utcnow())
 	if prev_subscription:
@@ -67,6 +67,7 @@ def create_subscription(subscription):
 		dict_subscription['created_at'] = timenow
 		s_id = subscriptions.save(dict_subscription)
 		created = 1
+		subscription = json.dumps(dict_subscription, default=json_util.default)
 	return subscription, created, s_id
 
 def delete_subscription(subscription_id):

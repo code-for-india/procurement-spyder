@@ -1,5 +1,6 @@
 *.pyc
 *.pyo
+*.swp
 venv
 *~
 .DS_Store
@@ -8,3 +9,4 @@ node_modules
 .sass-cache
 bower_components
 conf.txt
+env.sh

@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from bson import json_util
 import json
 import mailer
+import states
 
 DB_URL = os.getenv('OPENSHIFT_MONGODB_DB_URL', 'mongodb://localhost:27017/')
 DB_NAME = os.getenv('OPENSHIFT_APP_NAME', 'worldbank')
@@ -87,8 +88,10 @@ def get_subscribers(procurement):
 	print 'PROJECT', project
 	sectors = map(lambda x: x['Name'], project['sector'])
 	print 'SECTORS', sectors
-	#FIXME Instead of passing procurement['city'] it should be state(procurement['city'])
-	query = get_query(sectors, procurement['city'])
+	state = states.get_state(procurement['city'])
+	if not state:
+		return subscribers 
+	query = get_query(sectors, state)
 	print 'QUERY', query
 	selected_subscribers = subscriptions.find(query, {'email':1, '_id':0})
 	print 'SELECTED_SUB', selected_subscribers

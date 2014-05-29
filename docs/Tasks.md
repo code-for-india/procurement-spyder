@@ -1,13 +1,13 @@
 ## Tasks
 
 * [Yogi] Send subscription mail based on both location and sector.
-* [Yogi] Push it to DB in world bank scrawling has to be changed.
 * [Yogi] Cron job in openshift for every 6 hours
 * [Yogi] Add ReCaptcha support in server side.
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
 * [Fizer] Create video
 * [Fizer] Reply to Ankur and Code for india with the video
+* [Yogi and Fizer] API to get STATE for the given CITY
 
 ### Done
 
@@ -24,7 +24,7 @@
 * Add space in locations and sectors array in the mail.
 * Update subscription response. Return object has 'updated' to true
 * Added created_at and updated_at UTC date format.
-
+* Push it to DB in world bank scrawling has to be changed.
 
 ## Recaptcha code
 

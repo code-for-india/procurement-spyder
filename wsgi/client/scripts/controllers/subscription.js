@@ -99,7 +99,7 @@ angular.module('myApp').controller('SubscriptionController',
     ];
 
     $scope.industryAndTrade = [
-      'Agro-industry, marketing, and trade',
+      'Agro-industry, marketing and trade',
       'General industry and trade sector',
       'Housing construction',
       'Other domestic and international trade',

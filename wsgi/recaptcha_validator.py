@@ -6,7 +6,7 @@ recaptcha_private_key =  os.getenv('RECAPTCHA_PRIVATE_KEY')
 def validate(response, challenge, remote_addr):
 	global recaptcha_private_key
 	if not recaptcha_private_key:
-		return true
+		return True
 	result = captcha.submit(
         		challenge,
 			response,
@@ -14,4 +14,4 @@ def validate(response, challenge, remote_addr):
 			remote_addr)
 	if not result.is_valid:
       		raise Exception('Invalid solution to CAPTCHA challenge')
-  	return true
+  	return True

@@ -28,7 +28,7 @@ def pull_projects():
 	response = urllib2.urlopen(req)
 	projects_str = response.read()
 	projects = json.loads(projects_str)
-	for project in project.get('projects').values():
+	for project in projects.get('projects').values():
 		database.save_project(project)
 	return
 

@@ -1,13 +1,14 @@
 ## Tasks
 
 * [Yogi] Send subscription mail based on both location and sector.
-* [Yogi] Cron job in openshift for every 6 hours
 * [Yogi] Add ReCaptcha support in server side.
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
 * [Fizer] Create video
 * [Fizer] Reply to Ankur and Code for india with the video
 * [Yogi and Fizer] API to get STATE for the given CITY
+* [Yogi and Fizer] Cron job in openshift for every 6 hours
+* [Fizer] Add Donate button
 
 ### Done
 

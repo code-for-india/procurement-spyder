@@ -1,8 +1,8 @@
 import os
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, request, url_for, redirect
 import database
-import mailgun
 import json
+import mailer
 app = Flask(__name__, static_folder='client', static_url_path='')
 
 @app.route('/')
@@ -14,28 +14,18 @@ app = Flask(__name__, static_folder='client', static_url_path='')
 def index():
 	return app.send_static_file('index.html')
 
-@app.route('/projects', methods=["POST", "GET"])
+@app.route('/projects', methods=["GET"])
 def projects():
 	'''
-	Function to create/get projects
+	Function to get projects
 	'''
-	if request.method == 'POST':
-		print request.data
-		return database.create_projects(request.data), 201
-	elif request.method == 'GET':
+	if request.method == 'GET':
 		return database.get_all_projects()
 
-@app.route('/comments', methods=["POST", "GET"])
-def comments():
-	'''
-	Function to add comment and read comments
-	'''
-	pass
-
-@app.route('/procurements', methods=["POST", "GET"])
+@app.route('/procurements', methods=["GET"])
 def procurements():
 	'''
-	Function to create procurement/get procurements
+	Function to get procurements
 	'''
 	if request.method == 'POST':
 		proc_resp = database.create_procurement(request.data)
@@ -45,7 +35,7 @@ def procurements():
 		subscribers = database.get_subscribers(proc_dict)
 		print 'SUBSCRIBERS-------------', subscribers
 		if subscribers:
-			send_subscription_mail(subscribers, proc_dict)
+			mailer.send_subscription_mail(subscribers, proc_dict)
 		return proc_resp, 201
 	elif request.method == 'GET':
 		return database.get_all_procurements()
@@ -59,12 +49,12 @@ def subscriptions():
 	subscription = json.loads(subscription_resp)
 	print subscription
 	if created:
-		send_welcome_mail(subscription['email'],
+		mailer.send_welcome_mail(subscription['email'],
 			', '.join(subscription['sectors']),
 			', '.join(subscription['locations']),
 			s_id)
 	else:
-		send_update_mail(subscription['email'],
+		mailer.send_update_mail(subscription['email'],
 			', '.join(subscription['sectors']),
 			', '.join(subscription['locations']),
 			s_id)
@@ -78,31 +68,6 @@ def unsubscribe(_id):
 	'''
 	database.delete_subscription(_id)
 	return redirect('/unsubscribed')
-
-#GET /sendmail
-@app.route('/sendmail', methods=["GET"])
-def sendmail(to_list, bcc_list, subject, body):
-	mail = {
-			"from": "Procurement Spyder <no-reply@chennainerd.in>",
-			"to": to_list,
-	    "bcc": bcc_list,
-	    "subject": subject,
-	    "html": body
-			}
-	mailgun.send_simple_message(mail)
-	return ''
-
-def send_update_mail(email, sectors, locations, s_id):
-	body = render_template('update-template.html', sectors=sectors, locations=locations, subscription_id=s_id)
-	sendmail([email], [], 'Your subscription has been updated', body)
-
-def send_welcome_mail(email, sectors, locations, s_id):
-	body = render_template('welcome-template.html', sectors=sectors, locations=locations, subscription_id=s_id)
-	sendmail([email], [], 'Your subscription has been confirmed', body)
-
-def send_subscription_mail(email_list, procurement):
-	body = render_template('subscription-template.html', name=procurement['title'], url=procurement['proc_url'])
-	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)
 
 if __name__ == '__main__':
 	app_name = os.getenv('OPENSHIFT_APP_NAME')

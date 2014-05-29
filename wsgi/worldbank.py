@@ -6,13 +6,15 @@ import urlparse
 import json
 from bson import json_util
 from BeautifulSoup import BeautifulSoup
+import database
 
 COUNT=10
 
 def main():
-	push_to_db(pull_from_worldbank())
+	pull_projects()
+	pull_procurements()
 
-def pull_from_worldbank():
+def pull_projects():
 	wb_url = 'http://search.worldbank.org/api/v2/projects'
 	params = {
 				'format':'json',
@@ -26,14 +28,9 @@ def pull_from_worldbank():
 	response = urllib2.urlopen(req)
 	projects_str = response.read()
 	projects = json.loads(projects_str)
-	projects_str = '[' + ', '.join([ json.dumps(project, default=json_util.default) for project in projects.get('projects').values()]) + ']'
-	return projects_str
-
-def push_to_db(projects):
-	db_url = 'http://127.0.0.1:8000/projects'
-	req = urllib2.Request(db_url, projects, {'Content-Type':'application/json'})
-	response = urllib2.urlopen(req)
-	print response.read()
+	for project in project.get('projects').values():
+		database.save_project(project)
+	return
 
 def pull_procurements():
 	url = 'http://www.worldbank.org/p2e/procurement/procurementsearchpagination.html'
@@ -83,22 +80,8 @@ def pull_procurements():
 				proc_info = get_proc_info('http://www.worldbank.org'+a['href'])
 				if not proc_info:
 					continue
-				push_proc_info(json.dumps(proc_info, default=json_util.default))
 
-
-def push_proc_info(proc_info):
-	db_url = 'http://127.0.0.1:8000/procurements'
-	retry = 5
-	while retry > 0:
-		req = urllib2.Request(db_url, proc_info, {'Content-Type':'application/json'})
-		try:
-			response = urllib2.urlopen(req)
-			print response.read()
-			retry = 0
-		except urllib2.HTTPError, e:
-			pass
-		retry = retry - 1
-
+				database.save_procurement(proc_info)
 
 def get_proc_info(url):
 	retry = 5
@@ -126,7 +109,6 @@ def get_proc_info(url):
 
 	return proc_info
 
-
 if __name__ == '__main__':
-	#main()
-	pull_procurements()
+	main()
+

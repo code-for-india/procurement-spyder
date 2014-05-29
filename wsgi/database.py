@@ -5,6 +5,7 @@ from pymongo import ASCENDING, DESCENDING
 from bson.objectid import ObjectId
 from bson import json_util
 import json
+import mailer
 
 DB_URL = os.getenv('OPENSHIFT_MONGODB_DB_URL', 'mongodb://localhost:27017/')
 DB_NAME = os.getenv('OPENSHIFT_APP_NAME', 'worldbank')
@@ -14,26 +15,25 @@ projects = db['projects']
 procurements = db['procurements']
 subscriptions = db['subscriptions']
 
-def create_projects(projects_array):
-	dict_projects_array = json.loads(projects_array)
-	for project in dict_projects_array:
-		projects.save(project)
-		#TODO check if project got saved
-	return projects_array
+def save_project(project):
+	existing_project = projects.find_one({'id': project['id']})
+	if existing_project:
+		return None
+	projects.save(project)
+	return project
 
 def get_all_projects():
 	return '[' + ', '.join([json.dumps(result, default=json_util.default) for result in projects.find()]) + ']'
 
-def create_procurement(procurement):
-	dict_procurement = json.loads(procurement)
-	dict_procurement['_id'] = dict_procurement['proc_id']
-	existing_procurement = procurements.find_one({'_id':dict_procurement['proc_id']}, {'_id':0})
+def save_procurement(procurement):
+	existing_procurement = procurements.find_one({'_id': procurement['proc_id']})
 	if existing_procurement:
 		return None
-	ret = procurements.save(dict_procurement)
-	if not ret:
-		return None
-	#TODO check if project got saved
+	procurements.save(procurement)
+	subscribers = database.get_subscribers(procurement)
+	print 'SUBSCRIBERS-------------', subscribers
+	if subscribers:
+		mailer.send_subscription_mail(subscribers, procurement)
 	return procurement
 
 def get_all_procurements():

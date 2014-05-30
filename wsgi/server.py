@@ -2,7 +2,10 @@ import os
 from flask import Flask, request, url_for, redirect
 import database
 import json
+from bson import json_util
 import mailer
+import recaptcha_validator 
+
 app = Flask(__name__, static_folder='client', static_url_path='')
 
 @app.route('/')
@@ -47,7 +50,20 @@ def subscriptions():
 	'''
 	Function to create subscriptions
 	'''
-	subscription_resp, created, s_id = database.create_subscription(request.data)
+	print '-------', request.data, type(request.data)
+	
+	dict_subscription = json.loads(request.data)
+	try:
+		recaptcha_validator.validate(
+			dict_subscription['captcha']['response'],
+        		dict_subscription['captcha']['challenge'],
+        		request.remote_addr)
+	except Exception as e:
+		err = {}
+		err['message'] = str(e)
+		return json.dumps(err, default=json_util.default), 400
+ 
+	subscription_resp, created, s_id = database.create_subscription(dict_subscription)
 	subscription = json.loads(subscription_resp)
 	print subscription
 	if created:

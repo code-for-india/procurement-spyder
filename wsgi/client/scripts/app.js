@@ -24,6 +24,14 @@ angular.module('myApp', [
                 controller: 'SubscriptionController'
             })
 
+            .when('/verify', {
+                templateUrl: 'scripts/views/subscription-verify.html',
+            })
+
+            .when('/verify-failed', {
+                templateUrl: 'scripts/views/subscription-verify-failed.html',
+            })
+
             .when('/success', {
                 templateUrl: 'scripts/views/subscription-success.html',
             })

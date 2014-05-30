@@ -8,6 +8,8 @@ app = Flask(__name__, static_folder='client', static_url_path='')
 @app.route('/')
 @app.route('/about')
 @app.route('/subscribe')
+@app.route('/verify')
+@app.route('/verify-failed')
 @app.route('/success')
 @app.route('/updated')
 @app.route('/unsubscribed')
@@ -68,6 +70,17 @@ def unsubscribe(_id):
 	'''
 	database.delete_subscription(_id)
 	return redirect('/unsubscribed')
+
+# Verify email address
+@app.route('/verify/<token>', methods=["GET"])
+def verify_token(token):
+	'''
+	Function to verify subscription by token
+	'''
+	# TODO get subscription by token and updated verified to true
+	# return redirect('/verify-failed')
+	return redirect('/success')
+
 
 if __name__ == '__main__':
 	app_name = os.getenv('OPENSHIFT_APP_NAME')

@@ -180,7 +180,7 @@ angular.module('myApp').controller('SubscriptionController',
           if (response.updated) {
             return $location.path('/updated');
           }
-          $location.path('/success');
+          $location.path('/verify');
         },
         function (error) {
           alert((error.data && error.data.message) || 'Error! Please check the fields.');

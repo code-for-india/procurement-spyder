@@ -1,14 +1,16 @@
 ## Tasks
 
+* [Yogi and Fizer] Create verify link.
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
 * [Fizer] Create video
 * [Fizer] Reply to Ankur and Code for india with the video
+* [Fizer] Recaptcha does not displayed in certain browsers
 * [Fizer] Add Donate button
 
 ### Done
 
-* [Fizer] Check and Remove Boostrap tpl.
+* Check and Remove Boostrap tpl.
 * Change front end ui and update about, and description.
 * Change Location to Locations. Support multiple location
 * Check whether new procurement intitate subscription mail
@@ -25,4 +27,3 @@
 * Send subscription mail based on both location and sector.
 * Add ReCaptcha support in server side.
 * API to get STATE for the given CITY
-

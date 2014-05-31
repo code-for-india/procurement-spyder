@@ -46,6 +46,34 @@
   background-color: #e7f3ef;
 }
 
+.how-it-works {
+  text-align: left;
+  padding-top: 30px;
+
+  li {
+    padding: 20px 0;
+  }
+
+  .text {
+    padding-left: 10px;
+    font-size: 20px;
+    display: inline-block;
+  }
+}
+
+.number-circle {
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #0067B7;
+    border: 2px solid #0067B7;
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
 .team {
   padding-bottom: 60px;
   h4 {

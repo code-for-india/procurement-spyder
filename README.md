@@ -39,4 +39,5 @@ Following steps are only needed one time
 
 ### Deploy to openshift
 
+    $ rhc env-set HOSTED_AT=http://worldbank.chennainerd.in -a procurement
     $ git push openshift master

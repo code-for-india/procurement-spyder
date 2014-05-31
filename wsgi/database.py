@@ -65,6 +65,7 @@ def create_subscription(dict_subscription):
 		subscription = json.dumps(prev_subscription, default=json_util.default)
 	else:
 		dict_subscription['created_at'] = timenow
+		dict_subscription['verified'] = False
 		s_id = subscriptions.save(dict_subscription)
 		created = 1
 		subscription = json.dumps(dict_subscription, default=json_util.default)
@@ -76,7 +77,8 @@ def delete_subscription(subscription_id):
 def get_query(sectors, location):
 	query = {}
 	query['$and'] = [{'locations': {'$in': [location, 'All over India']}}, 
-			 {'sectors': {'$in': sectors}}] 
+			 {'sectors': {'$in': sectors}},
+			 {'verified': True}]
 	return query
 
 def get_subscribers(procurement):
@@ -97,3 +99,9 @@ def get_subscribers(procurement):
 	selected_subscribers = subscriptions.find(query, {'email':1, '_id':0})
 	print 'SELECTED_SUB', selected_subscribers
 	return [email for email in set(map(lambda x: x['email'], selected_subscribers))]
+
+def verify_subscription(token):
+	subscription = subscriptions.find_and_modify(
+				query={'_id': ObjectId(token)},
+				update={"$set": {"verified": True}})
+	return subscription

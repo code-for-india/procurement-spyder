@@ -50,8 +50,6 @@ def subscriptions():
 	'''
 	Function to create subscriptions
 	'''
-	print '-------', request.data, type(request.data)
-	
 	dict_subscription = json.loads(request.data)
 	try:
 		recaptcha_validator.validate(
@@ -67,10 +65,7 @@ def subscriptions():
 	subscription = json.loads(subscription_resp)
 	print subscription
 	if created:
-		mailer.send_welcome_mail(subscription['email'],
-			', '.join(subscription['sectors']),
-			', '.join(subscription['locations']),
-			s_id)
+		mailer.send_verification_mail(subscription['email'], s_id)
 	else:
 		mailer.send_update_mail(subscription['email'],
 			', '.join(subscription['sectors']),
@@ -93,9 +88,14 @@ def verify_token(token):
 	'''
 	Function to verify subscription by token
 	'''
-	# TODO get subscription by token and updated verified to true
-	# return redirect('/verify-failed')
-	return redirect('/success')
+	subscription = database.verify_subscription(token)
+	if subscription:
+		mailer.send_welcome_mail(subscription['email'],
+			', '.join(subscription['sectors']),
+			', '.join(subscription['locations']),
+			str(subscription['_id']))
+		return redirect('/success')
+	return redirect('/verify-failed')
 
 
 if __name__ == '__main__':

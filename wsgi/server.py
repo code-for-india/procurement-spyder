@@ -60,12 +60,12 @@ def subscriptions():
 		err = {}
 		err['message'] = str(e)
 		return json.dumps(err, default=json_util.default), 400
- 
 	subscription_resp, created, s_id = database.create_subscription(dict_subscription)
 	subscription = json.loads(subscription_resp)
 	print subscription
 	if created:
 		mailer.send_verification_mail(subscription['email'], s_id)
+		return redirect('/verify')
 	else:
 		mailer.send_update_mail(subscription['email'],
 			', '.join(subscription['sectors']),

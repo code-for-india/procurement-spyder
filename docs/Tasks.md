@@ -1,6 +1,5 @@
 ## Tasks
 
-* [Yogi and Fizer] Create verify link.
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
 * [Yogi and Fizer] Subscription does not work properly in openshift.
 * [Fizer] Create video
@@ -27,3 +26,4 @@
 * Send subscription mail based on both location and sector.
 * Add ReCaptcha support in server side.
 * API to get STATE for the given CITY
+* Create verify link.

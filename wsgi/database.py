@@ -23,6 +23,10 @@ def save_project(project):
 	projects.save(project)
 	return project
 
+def get_all_projectids():
+	result_set = projects.find({}, {'id':1, '_id':0})
+	return [ project['id'] for project in result_set ]
+
 def get_all_projects():
 	return '[' + ', '.join([json.dumps(result, default=json_util.default) for result in projects.find()]) + ']'
 

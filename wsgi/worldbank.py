@@ -8,82 +8,71 @@ from bson import json_util
 from BeautifulSoup import BeautifulSoup
 import database
 
-COUNT=10
-
 def main():
 	pull_projects()
 	pull_procurements()
 
-def pull_projects():
+def get_active_project_count():
 	wb_url = 'http://search.worldbank.org/api/v2/projects'
 	params = {
-				'format':'json',
-				'source':'IBRD',
-				'countryname_exact':'Republic of India',
-				'rows':COUNT,
-				'kw':'N'
-				}
+		'format':'json',
+		'source':'IBRD',
+		'countryname_exact':'Republic of India',
+		'rows':1,
+		'kw':'N',
+		'status_exact':'Active'
+		}
 	data = urllib.urlencode(params)
 	req = urllib2.Request(wb_url, data)
 	response = urllib2.urlopen(req)
-	projects_str = response.read()
-	projects = json.loads(projects_str)
-	for project in projects.get('projects').values():
-		database.save_project(project)
+	meta_str = response.read()
+	metadata = json.loads(meta_str)
+	return int(metadata.get('total', 0))
+
+def pull_projects():
+	count = get_active_project_count()
+	each_pull = 10
+	to_pull = count
+	while to_pull:
+		this_pull = to_pull if each_pull > to_pull else each_pull
+		wb_url = 'http://search.worldbank.org/api/v2/projects'
+		params = {
+			'format':'json',
+			'source':'IBRD',
+			'countryname_exact':'Republic of India',
+			'rows': this_pull,
+			'os': count - to_pull,
+			'kw':'N',
+			'status_exact': 'Active'
+		}
+		data = urllib.urlencode(params)
+		req = urllib2.Request(wb_url, data)
+		response = urllib2.urlopen(req)
+		projects_str = response.read()
+		projects = json.loads(projects_str)
+		for project in projects.get('projects').values():
+			database.save_project(project)
+		to_pull = to_pull - this_pull
 	return
 
 def pull_procurements():
-	url = 'http://www.worldbank.org/p2e/procurement/procurementsearchpagination.html'
-	params = {
-				'procurement_method_name_exact': '',
-				'submission_strdate': '',
-				'notice_type_exact': '',
-				'activeStartIndex': 0,
-				'noOfRows': 100,
-				'clickIndex': 2,
-				'procurement_method_code_exact': '',
-				'rregioncode': '',
-				'project_ctry_name_exact': '',
-				'sectorcode_exact': '',
-				'showrecent': '',
-				'paramValue': '',
-				'activeEndIndex': '10',
-				'sortOrder': '',
-				'deadline_strdate': '',
-				'project_ctry_code_exact': 'IN',
-				'paramKey': 'srt',
-				'procurement_type_exact': '',
-				'submission_enddate': '',
-				'regionname_exact': '',
-				'queryString': 'qterm=&project_ctry_code_exact=IN&srt=submission_date desc,id asc',
-				'deadline_enddate': '',
-				'lang': 'en',
-				'searchString': '',
-				'startIndex': 0,
-				'sector_exact': ''
-			}
-	data = urllib.urlencode(params)
-	retry = 5
-	while retry > 0:
-		req = urllib2.Request(url, data)
-		try:
-			response = urllib2.urlopen(req)
-			retry = 0
-		except urllib2.HTTPError, e:
-			retry = retry - 1
-			continue
-
+	projects = database.get_all_projectids()
+	for project in projects:
+		url = 'http://www.worldbank.org/p2e/procurement.html?projId=%s&lang=en' % str(project)
+		print url
+		req = urllib2.Request(url)
+		response = urllib2.urlopen(req)
 		resphtml = response.read()
 		soup = BeautifulSoup(resphtml)
 		for a in soup.findAll('a', href = True):
-			if a['href'].startswith('/projects/procurement'):
+			if a['href'].startswith('/projects/procurement/noticeoverview'):
 				proc_info = get_proc_info('http://www.worldbank.org'+a['href'])
 				if not proc_info:
 					continue
-
 				database.save_procurement(proc_info)
 
 def get_proc_info(url):
+	print url
 	retry = 5
 	proc_info = {}
 	while retry > 0:

@@ -34,6 +34,7 @@ def save_procurement(procurement):
 	existing_procurement = procurements.find_one({'_id': procurement['proc_id']})
 	if existing_procurement:
 		return None
+	procurement['_id'] = procurement['proc_id']
 	procurements.save(procurement)
 	subscribers = get_subscribers(procurement)
 	print 'SUBSCRIBERS-------------', subscribers

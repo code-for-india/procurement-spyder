@@ -31,6 +31,7 @@ def get_active_project_count():
 
 def pull_projects():
 	count = get_active_project_count()
+	print 'Number of active projects = %d' % count
 	each_pull = 10
 	to_pull = count
 	while to_pull:
@@ -46,30 +47,45 @@ def pull_projects():
 			'status_exact': 'Active'
 		}
 		data = urllib.urlencode(params)
-		req = urllib2.Request(wb_url, data)
-		response = urllib2.urlopen(req)
-		projects_str = response.read()
-		projects = json.loads(projects_str)
-		for project in projects.get('projects').values():
-			database.save_project(project)
-		to_pull = to_pull - this_pull
+		retry = 5
+		while retry:
+			req = urllib2.Request(wb_url, data)
+			try:
+				print 'To pull =  %d' % to_pull 
+				response = urllib2.urlopen(req)
+				retry = 0
+			except (urllib2.HTTPError, urllib2.URLError) as e:
+				retry = retry - 1
+				continue
+			projects_str = response.read()
+			projects = json.loads(projects_str)
+			for project in projects.get('projects').values():
+				database.save_project(project)
+			to_pull = to_pull - this_pull
 	return
 
 def pull_procurements():
 	projects = database.get_all_projectids()
 	for project in projects:
 		url = 'http://www.worldbank.org/p2e/procurement.html?projId=%s&lang=en' % str(project)
-		print url
-		req = urllib2.Request(url)
-		response = urllib2.urlopen(req)
-		resphtml = response.read()
-		soup = BeautifulSoup(resphtml)
-		for a in soup.findAll('a', href = True):
-			if a['href'].startswith('/projects/procurement/noticeoverview'):
-				proc_info = get_proc_info('http://www.worldbank.org'+a['href'])
-				if not proc_info:
-					continue
-				database.save_procurement(proc_info)
+		retry = 5
+		while retry:
+			print url
+			req = urllib2.Request(url)
+			try:
+				response = urllib2.urlopen(req)
+				retry = 0
+			except (urllib2.HTTPError, urllib2.URLError) as e:
+				retry = retry - 1
+				continue
+			resphtml = response.read()
+			soup = BeautifulSoup(resphtml)
+			for a in soup.findAll('a', href = True):
+				if a['href'].startswith('/projects/procurement/noticeoverview'):
+					proc_info = get_proc_info('http://www.worldbank.org'+a['href'])
+					if not proc_info:
+						continue
+					database.save_procurement(proc_info)
 
 def get_proc_info(url):
 	print url
@@ -80,7 +96,7 @@ def get_proc_info(url):
 		try:
 			response = urllib2.urlopen(req)
 			retry = 0
-		except urllib2.HTTPError, e:
+		except (urllib2.HTTPError, urllib2.URLError) as e:
 			retry = retry - 1
 			continue
 		resphtml = response.read()

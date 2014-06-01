@@ -1,7 +1,10 @@
 import os
+from jinja2 import Environment, PackageLoader
 from flask import render_template
 import mailgun
+
 hosted_at=os.getenv('HOSTED_AT', 'http://127.0.0.1:8000')
+
 def send_verification_mail(email, s_id):
 	global hosted_at
 	body = render_template('verification-template.html',
@@ -30,8 +33,9 @@ def send_welcome_mail(email, sectors, locations, s_id):
 
 def send_subscription_mail(email_list, procurement):
 	global hosted_at
-	body = render_template('subscription-template.html',
-			name=procurement['title'],
+	env = Environment(loader=PackageLoader(__name__, 'templates'))
+	template = env.get_template('subscription-template.html')
+	body = template.render(name=procurement['title'],
 			url=procurement['proc_url'],
 			hosted_at=hosted_at)
 	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)

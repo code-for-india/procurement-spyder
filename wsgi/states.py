@@ -36,7 +36,7 @@ states = {
 		'ahmedabad', 'amreli district', 'anand', 'banaskantha', 'bharuch', 'bhavnagar', 'dahod', 'the dangs', 'gandhinagar', 'jamnagar', 'junagadh', 'kutch', 'kheda', 'mehsana', 'narmada', 'navsari', 'patan', 'panchmahal', 'porbandar', 'rajkot', 'sabarkantha', 'surendranagar', 'surat', 'vadodara', 'valsad'
 	),
 	'Haryana' : (
-		'ambala', 'bhiwani', 'faridabad', 'fatehabad', 'gurgaon', 'hissar', 'jhajjar', 'jind', 'karnal', 'kaithal', 'kurukshetra', 'mahendragarh', 'mewat', 'panchkula', 'panipat', 'rewari', 'rohtak', 'sirsa', 'sonepat', 'yamuna nagar', 'palwal'
+		'ambala', 'bhiwani', 'faridabad', 'fatehabad', 'gurgaon', 'hisar', 'hissar', 'jhajjar', 'jind', 'karnal', 'kaithal', 'kurukshetra', 'mahendragarh', 'mewat', 'panchkula', 'panipat', 'rewari', 'rohtak', 'sirsa', 'sonepat', 'yamuna nagar', 'palwal'
 	),
 	'Himachal Pradesh' : (
 		'bilaspur', 'chamba', 'hamirpur', 'kangra', 'kinnaur', 'kulu', 'lahaul and spiti', 'mandi', 'shimla', 'sirmaur', 'solan', 'una'
@@ -75,7 +75,7 @@ states = {
 		'dimapur', 'kohima', 'mokokchung', 'mon', 'phek', 'tuensang', 'wokha', 'zunheboto'
 	),
 	'Orissa' : (
-		'angul', 'boudh', 'bhadrak', 'bolangir', 'bargarh', 'baleswar', 'cuttack', 'debagarh', 'dhenkanal', 'ganjam', 'gajapati', 'jharsuguda', 'jajapur', 'jagatsinghpur', 'khordha', 'kendujhar', 'kalahandi', 'kandhamal', 'koraput', 'kendrapara', 'malkangiri', 'mayurbhanj', 'nabarangpur', 'nuapada', 'nayagarh', 'puri', 'rayagada', 'sambalpur', 'subarnapur', 'sundargarh'
+		'angul', 'boudh', 'bhadrak', 'bhubaneswar', 'bhubaneshwar', 'bolangir', 'bargarh', 'baleswar', 'cuttack', 'debagarh', 'dhenkanal', 'ganjam', 'gajapati', 'jharsuguda', 'jajapur', 'jagatsinghpur', 'khordha', 'kendujhar', 'kalahandi', 'kandhamal', 'koraput', 'kendrapara', 'malkangiri', 'mayurbhanj', 'nabarangpur', 'nuapada', 'nayagarh', 'puri', 'rayagada', 'sambalpur', 'subarnapur', 'sundargarh'
 	),
 	'Puducherry' : (
 		'karaikal', 'mahe', 'puducherry', 'yanam'
@@ -110,7 +110,12 @@ def get_state(city):
 	city = city.lower()
 	global states
 	for state in states.keys():
-		if city == state.lower():
-			return state
 		if city in states[state]:
 			return state
+		if city == state.lower():
+			return state
+		if city == 'all over india':
+			return 'All over India'
+		if city == 'n/a':
+			return 'All over India'
+		

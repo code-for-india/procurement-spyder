@@ -11,7 +11,7 @@ def send_verification_mail(email, s_id):
 			url='%s/verify/%s' % (hosted_at, s_id),
 			subscription_id=s_id,
 			hosted_at=hosted_at)
-	sendmail([email], [], 'Verify your Procurement Spyder subscription', body)
+	sendmail([email], [], 'Verify your subscription', body)
 
 def send_update_mail(email, sectors, locations, s_id):
 	global hosted_at

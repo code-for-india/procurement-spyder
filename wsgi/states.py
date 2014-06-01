@@ -48,7 +48,7 @@ states = {
 		'bokaro', 'chatra', 'deoghar', 'dhanbad', 'dumka', 'purba singhbhum', 'garhwa', 'giridih', 'godda', 'gumla', 'hazaribagh', 'koderma', 'lohardaga', 'pakur', 'palamu', 'ranchi', 'sahibganj', 'seraikela and kharsawan', 'pashchim singhbhum', 'ramgarh'
 	),
 	'Karnataka' : (
-		'bidar', 'belgaum', 'bijapur', 'bagalkot', 'bellary', 'bangalore rural district', 'bangalore urban district', 'chamarajnagar', 'chikmagalur', 'chitradurga', 'davanagere', 'dharwad', 'dakshina kannada', 'gadag', 'gulbarga', 'hassan', 'haveri district', 'kodagu', 'kolar', 'koppal', 'mandya', 'mysore', 'raichur', 'shimoga', 'tumkur', 'udupi', 'uttara kannada', 'ramanagara', 'chikballapur', 'yadagiri'
+		'bidar', 'belgaum', 'bijapur', 'bagalkot', 'bellary', 'bangalore', 'chamarajnagar', 'chikmagalur', 'chitradurga', 'davanagere', 'dharwad', 'dakshina kannada', 'gadag', 'gulbarga', 'hassan', 'haveri district', 'kodagu', 'kolar', 'koppal', 'mandya', 'mysore', 'raichur', 'shimoga', 'tumkur', 'udupi', 'uttara kannada', 'ramanagara', 'chikballapur', 'yadagiri'
 	),
 	'Kerala' : (
 		'alappuzha', 'ernakulam', 'idukki', 'kollam', 'kannur', 'kasaragod', 'kottayam', 'kozhikode', 'malappuram', 'palakkad', 'pathanamthitta', 'thrissur', 'thiruvananthapuram', 'wayanad'
@@ -60,7 +60,7 @@ states = {
 		'alirajpur', 'anuppur', 'ashok nagar', 'balaghat', 'barwani', 'betul', 'bhind', 'bhopal', 'burhanpur', 'chhatarpur', 'chhindwara', 'damoh', 'datia', 'dewas', 'dhar', 'dindori', 'guna', 'gwalior', 'harda', 'hoshangabad', 'indore', 'jabalpur', 'jhabua', 'katni', 'khandwa', 'khargone', 'mandla', 'mandsaur', 'morena', 'narsinghpur', 'neemuch', 'panna', 'rewa', 'rajgarh', 'ratlam', 'raisen', 'sagar', 'satna', 'sehore', 'seoni', 'shahdol', 'shajapur', 'sheopur', 'shivpuri', 'sidhi', 'singrauli', 'tikamgarh', 'ujjain', 'umaria', 'vidisha'
 	),
 	'Maharashtra' : (
-		'ahmednagar', 'akola', 'amrawati', 'aurangabad', 'bhandara', 'beed', 'buldhana', 'chandrapur', 'dhule', 'gadchiroli', 'gondiya', 'hingoli', 'jalgaon', 'jalna', 'kolhapur', 'latur', 'mumbai city', 'mumbai suburban', 'nandurbar', 'nanded', 'nagpur', 'nashik', 'osmanabad', 'parbhani', 'pune', 'raigad', 'ratnagiri', 'sindhudurg', 'sangli', 'solapur', 'satara', 'thane', 'wardha', 'washim', 'yavatmal'
+		'ahmednagar', 'akola', 'amrawati', 'aurangabad', 'bhandara', 'beed', 'buldhana', 'chandrapur', 'dhule', 'gadchiroli', 'gondiya', 'hingoli', 'jalgaon', 'jalna', 'kolhapur', 'latur', 'mumbai', 'navi mumbai', 'mumbai suburban', 'nandurbar', 'nanded', 'nagpur', 'nashik', 'osmanabad', 'parbhani', 'pune', 'raigad', 'ratnagiri', 'sindhudurg', 'sangli', 'solapur', 'satara', 'thane', 'wardha', 'washim', 'yavatmal'
 	),
 	'Manipur' : (
 		'bishnupur', 'churachandpur', 'chandel', 'imphal east', 'senapati', 'tamenglong', 'thoubal', 'ukhrul', 'imphal west'
@@ -99,7 +99,7 @@ states = {
 		'almora', 'bageshwar', 'chamoli', 'champawat', 'dehradun', 'haridwar', 'nainital', 'pauri garhwal', 'pithoragharh', 'rudraprayag', 'tehri garhwal', 'udham singh nagar', 'uttarkashi'
 	),
 	'Uttar Pradesh' : (
-		'agra', 'allahabad', 'aligarh', 'ambedkar nagar', 'auraiya', 'azamgarh', 'barabanki', 'badaun', 'bagpat', 'bahraich', 'bijnor', 'ballia', 'banda', 'balrampur', 'bareilly', 'basti', 'bulandshahr', 'chandauli', 'chitrakoot', 'deoria', 'etah', 'kanshiram nagar', 'etawah', 'firozabad', 'farrukhabad', 'fatehpur', 'faizabad', 'gautam buddha nagar', 'gonda', 'ghazipur', 'gorkakhpur', 'ghaziabad', 'hamirpur', 'hardoi', 'mahamaya nagar', 'jhansi', 'jalaun', 'jyotiba phule nagar', 'jaunpur district', 'kanpur dehat', 'kannauj', 'kanpur nagar', 'kaushambi', 'kushinagar', 'lalitpur', 'lakhimpur kheri', 'lucknow', 'mau', 'meerut', 'maharajganj', 'mahoba', 'mirzapur', 'moradabad', 'mainpuri', 'mathura', 'muzaffarnagar', 'pilibhit', 'pratapgarh', 'rampur', 'rae bareli', 'saharanpur', 'sitapur', 'shahjahanpur', 'sant kabir nagar', 'siddharthnagar', 'sonbhadra', 'sant ravidas nagar', 'sultanpur', 'shravasti', 'unnao', 'varanasi'
+		'agra', 'allahabad', 'aligarh', 'ambedkar nagar', 'auraiya', 'azamgarh', 'barabanki', 'badaun', 'bagpat', 'bahraich', 'bijnor', 'ballia', 'banda', 'balrampur', 'bareilly', 'basti', 'bulandshahr', 'chandauli', 'chitrakoot', 'deoria', 'etah', 'kanshiram nagar', 'etawah', 'firozabad', 'farrukhabad', 'fatehpur', 'faizabad', 'gautam buddha nagar', 'gonda', 'ghazipur', 'gorkakhpur', 'ghaziabad', 'hamirpur', 'hardoi', 'mahamaya nagar', 'jhansi', 'jalaun', 'jyotiba phule nagar', 'jaunpur district', 'kanpur', 'kanpur dehat', 'kannauj', 'kanpur nagar', 'kaushambi', 'kushinagar', 'lalitpur', 'lakhimpur kheri', 'lucknow', 'mau', 'meerut', 'maharajganj', 'mahoba', 'mirzapur', 'moradabad', 'mainpuri', 'mathura', 'muzaffarnagar', 'pilibhit', 'pratapgarh', 'rampur', 'rae bareli', 'saharanpur', 'sitapur', 'shahjahanpur', 'sant kabir nagar', 'siddharthnagar', 'sonbhadra', 'sant ravidas nagar', 'sultanpur', 'shravasti', 'unnao', 'varanasi'
 	),
 	'West Bengal' : (
 		'birbhum', 'bankura', 'bardhaman', 'darjeeling', 'dakshin dinajpur', 'hooghly', 'howrah', 'jalpaiguri', 'cooch behar', 'kolkata', 'malda', 'midnapore', 'murshidabad', 'nadia', 'north 24 parganas', 'south 24 parganas', 'purulia', 'uttar dinajpur'
@@ -110,5 +110,7 @@ def get_state(city):
 	city = city.lower()
 	global states
 	for state in states.keys():
+		if city == state.lower():
+			return state
 		if city in states[state]:
 			return state

@@ -1,12 +1,12 @@
 ## Tasks
 
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
-* [Fizer] Reply to Ankur and Code for india with the video
 * [Fizer] Recaptcha does not displayed in certain browsers
 * [Fizer] Add Donate button
 
 ### Done
 
+* Reply to Ankur and Code for india with the video
 * Create video
 * Subscription does not work properly in openshift.
 * Check and Remove Boostrap tpl.

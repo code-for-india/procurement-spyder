@@ -1,14 +1,14 @@
 ## Tasks
 
 * [Yogi and Fizer] Cron job in openshift for every 6 hours
-* [Fizer] Create video
 * [Fizer] Reply to Ankur and Code for india with the video
 * [Fizer] Recaptcha does not displayed in certain browsers
 * [Fizer] Add Donate button
 
 ### Done
 
-* [Yogi and Fizer] Subscription does not work properly in openshift.
+* Create video
+* Subscription does not work properly in openshift.
 * Check and Remove Boostrap tpl.
 * Change front end ui and update about, and description.
 * Change Location to Locations. Support multiple location

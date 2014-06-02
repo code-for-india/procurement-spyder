@@ -6,7 +6,7 @@ Money from World Bank supported projects impacts citizens and businesses directl
 through the contracts that are awarded for public goods or services - such as
 for laying roads or building schools. Surprisingly, not many many know about
 these contracts we’re investing in, even when they represent large amounts of
-public money meant for their neighbourhood.
+public money meant for their neighborhood.
 
 ### Proposed Solutions
 
@@ -23,12 +23,6 @@ Following steps are only needed one time
   2. source venv/bin/activate
   3. pip install -r requirements.pip
 
-
-### Scrawl the World Bank Projects and Procurments
-
-    cd wsgi/
-    python worldbank.py
-
 ### Run application
 
     export MAILGUN_API_KEY=copy_from_conf
@@ -37,8 +31,13 @@ Following steps are only needed one time
     cd wsgi/
     python server.py
 
+To Scrawl the World Bank Projects and Procurements
+
+    cd wsgi/
+    python worldbank.py
+
 ### Deploy to openshift
 
     $ rhc env-set MAILGUN_API_KEY=copy_from_conf -a procurement
-    $ rhc env-set HOSTED_AT=http://worldbank.chennainerd.in -a procurement
+    $ rhc env-set HOSTED_AT=http://procurement-spyder.chennainerd.in -a procurement
     $ git push openshift master

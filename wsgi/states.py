@@ -114,5 +114,4 @@ def get_state(city):
 			return state
 		if city == state.lower():
 			return state
-		return 'All over India'
-		
+	return 'All over India'

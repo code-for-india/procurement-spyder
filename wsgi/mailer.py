@@ -35,10 +35,13 @@ def send_subscription_mail(email_list, procurement):
 	global hosted_at
 	env = Environment(loader=PackageLoader(__name__, 'templates'))
 	template = env.get_template('subscription-template.html')
-	body = template.render(name=procurement['title'],
-			url=procurement['proc_url'],
-			hosted_at=hosted_at)
-	sendmail(email_list, [], 'New Procurement: %s' % procurement['title'] , body)
+	for email in email_list:
+		s_id = get_subscription_id(email)
+		body = template.render(name=procurement['title'],
+				url=procurement['proc_url'],
+				hosted_at=hosted_at,
+				subscription_id=s_id)
+		sendmail([email], [], 'New Procurement: %s' % procurement['title'] , body)
 
 def sendmail(to_list, bcc_list, subject, body):
 	mail = {

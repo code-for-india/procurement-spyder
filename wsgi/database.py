@@ -110,3 +110,7 @@ def verify_subscription(token):
 				query={'_id': ObjectId(token)},
 				update={"$set": {"verified": True}})
 	return subscription
+
+def get_subscription_id(email):
+	subscription = subscriptions.find_one({'email':email}, {'_id': 1})
+	return subscription['_id']
